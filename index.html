@@ -39,13 +39,17 @@
             <nav aria-label="Hauptnavigation">
                 <ul class="nav__links">
                     <li><a class="nav__link" href="#projekttagebuch" data-open-tab="tab-projects">Projekttagebuch</a></li>
-                    <li><a class="nav__link" href="#projekttagebuch" data-open-tab="tab-ideas">Ideen &amp; Gedanken</a></li>
                     <li><a class="nav__link" href="#projekttagebuch" data-open-tab="tab-smart-home">Smart Home</a></li>
+                    <li><a class="nav__link" href="#projekttagebuch" data-open-tab="tab-ideas">Ideen &amp; Gedanken</a></li>
                 </ul>
             </nav>
 
             <div class="nav__actions">
+                <!-- Suche vorerst deaktiviert. Zum Reaktivieren diese Zeile und den
+                     Dialog weiter unten auskommentieren sowie posts.js und search.js
+                     wieder einbinden.
                 <button class="nav__search" type="button" data-search-open><span aria-hidden="true">⌕</span> Suchen</button>
+                -->
                 <a class="nav__contact" href="#ueber-mich">Über mich</a>
             </div>
 
@@ -94,8 +98,8 @@
                     <div class="journal-browser__dots" aria-hidden="true"><span></span><span></span><span></span></div>
                     <div class="journal-tabs" role="tablist" aria-label="Blog-Kategorien">
                         <button class="journal-tab" id="tab-projects" type="button" role="tab" aria-selected="true" aria-controls="panel-projects" tabindex="0"><span>01</span> Projekttagebuch</button>
-                        <button class="journal-tab" id="tab-ideas" type="button" role="tab" aria-selected="false" aria-controls="panel-ideas" tabindex="-1"><span>02</span> Ideen &amp; Gedanken</button>
-                        <button class="journal-tab" id="tab-smart-home" type="button" role="tab" aria-selected="false" aria-controls="panel-smart-home" tabindex="-1"><span>03</span> Smart Home</button>
+                        <button class="journal-tab" id="tab-smart-home" type="button" role="tab" aria-selected="false" aria-controls="panel-smart-home" tabindex="-1"><span>02</span> Smart Home</button>
+                        <button class="journal-tab" id="tab-ideas" type="button" role="tab" aria-selected="false" aria-controls="panel-ideas" tabindex="-1"><span>03</span> Ideen &amp; Gedanken</button>
                         <button class="journal-tab journal-tab--misc" id="tab-misc" type="button" role="tab" aria-selected="false" aria-controls="panel-misc" tabindex="-1"><span>04</span> Sonstiges</button>
                     </div>
                 </div>
@@ -132,6 +136,29 @@
                     </div>
                 </div>
 
+                <div class="journal-panel" id="panel-smart-home" role="tabpanel" aria-labelledby="tab-smart-home" hidden>
+                    <div class="category-layout">
+                        <div class="category-intro">
+                            <p class="section-kicker">Smart Home</p>
+                            <h2>Technik, die mir Arbeit <em>abnimmt.</em></h2>
+                            <p class="process__lead">Hier sammle ich, was ich bei Netzwerk, Sensoren und Automationen lerne. Es soll praktisch sein und auch in ein paar Jahren noch verständlich bleiben.</p>
+                            <p class="process__meta">Netzwerk · Sensoren · Automationen</p>
+                        </div>
+                        <div class="idea-list">
+                            <!-- beitraege:smart-home -->
+                            <article class="idea-card">
+                                <span class="idea-card__index">01</span>
+                                <div>
+                                    <h3><a href="/beitrag/002-smart-home-anfaenge.html">Von der Spielerei zur Leidenschaft</a></h3>
+                                    <p>Wie bei vielen SmartHome-Fans begann auch mein Weg mit einem Amazon Echo Dot, einer Philips-Hue-Bridge und den passenden Glühbirnen. Das dürfte etwa 2017 gewesen sein – zu der …</p>
+                                    <p class="idea-card__meta">20. August 2026 · 3 Min. Lesezeit</p>
+                                </div>
+                            </article>
+                            <!-- /beitraege:smart-home -->
+                        </div>
+                    </div>
+                </div>
+
                 <div class="journal-panel" id="panel-ideas" role="tabpanel" aria-labelledby="tab-ideas" hidden>
                     <div class="category-layout">
                         <div class="category-intro">
@@ -163,29 +190,6 @@
                                     <p>Diese Dinge schreibe ich lieber sofort auf. Sonst sind die kleinen Umwege schneller vergessen, als mir lieb ist.</p>
                                 </div>
                             </article>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="journal-panel" id="panel-smart-home" role="tabpanel" aria-labelledby="tab-smart-home" hidden>
-                    <div class="category-layout">
-                        <div class="category-intro">
-                            <p class="section-kicker">Smart Home</p>
-                            <h2>Technik, die mir Arbeit <em>abnimmt.</em></h2>
-                            <p class="process__lead">Hier sammle ich, was ich bei Netzwerk, Sensoren und Automationen lerne. Es soll praktisch sein und auch in ein paar Jahren noch verständlich bleiben.</p>
-                            <p class="process__meta">Netzwerk · Sensoren · Automationen</p>
-                        </div>
-                        <div class="idea-list">
-                            <!-- beitraege:smart-home -->
-                            <article class="idea-card">
-                                <span class="idea-card__index">01</span>
-                                <div>
-                                    <h3><a href="/beitrag/002-smart-home-anfaenge.html">Von der Spielerei zur Leidenschaft</a></h3>
-                                    <p>Wie bei vielen SmartHome-Fans begann auch mein Weg mit einem Amazon Echo Dot, einer Philips-Hue-Bridge und den passenden Glühbirnen. Das dürfte etwa 2017 gewesen sein – zu der …</p>
-                                    <p class="idea-card__meta">20. August 2026 · 3 Min. Lesezeit</p>
-                                </div>
-                            </article>
-                            <!-- /beitraege:smart-home -->
                         </div>
                     </div>
                 </div>
@@ -254,8 +258,8 @@
             <span class="home-footer__brand">Jan Behr</span>
             <nav class="home-footer__nav" aria-label="Footer-Navigation">
                 <a href="#projekttagebuch" data-open-tab="tab-projects">Projekttagebuch</a>
-                <a href="#projekttagebuch" data-open-tab="tab-ideas">Ideen &amp; Gedanken</a>
                 <a href="#projekttagebuch" data-open-tab="tab-smart-home">Smart Home</a>
+                <a href="#projekttagebuch" data-open-tab="tab-ideas">Ideen &amp; Gedanken</a>
                 <a href="#ueber-mich">Über mich</a>
                 <a href="impressum.html">Impressum</a>
                 <a href="datenschutz.html">Datenschutz</a>
@@ -265,7 +269,8 @@
         </div>
     </footer>
 
-    <!-- Search -->
+    <!-- Suche vorerst deaktiviert.
+    Search
     <dialog class="search-dialog" id="site-search" aria-labelledby="search-title">
         <div class="search-dialog__inner">
             <div class="search-dialog__header">
@@ -284,10 +289,9 @@
             <div class="search-results" data-search-results></div>
         </div>
     </dialog>
+    -->
 
     <script src="assets/header.js" defer></script>
-    <script src="assets/posts.js" defer></script>
-    <script src="assets/search.js" defer></script>
     <script src="assets/site.js" defer></script>
 
     <!-- Vercel Web Analytics: cookiefrei, wird von Vercel selbst ausgeliefert. -->
