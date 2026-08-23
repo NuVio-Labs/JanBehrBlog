@@ -1,0 +1,13 @@
+[data-search-open],
+.menu-button,
+.journal-browser__bar {
+    display: none !important;
+}
+
+.journal-panel[hidden] {
+    display: block !important;
+}
+
+.journal-panel + .journal-panel {
+    border-top: 1px solid rgba(23, 25, 22, 0.14);
+}
