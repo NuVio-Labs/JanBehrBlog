@@ -11,3 +11,14 @@
 .journal-panel + .journal-panel {
     border-top: 1px solid rgba(23, 25, 22, 0.14);
 }
+
+/* Ohne Skript bleibt der Zustand is-scrolled aus. Die Kopfzeilen brauchen
+   deshalb dauerhaft einen Hintergrund, sonst scrollt der Text sichtbar
+   durch sie hindurch. */
+.nav {
+    background: rgba(18, 20, 18, 0.92);
+}
+
+.site-header {
+    background: rgba(239, 240, 233, 0.92);
+}

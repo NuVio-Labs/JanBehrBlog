@@ -339,6 +339,7 @@ PAGE = '''<!doctype html>
     <title>{page_title} | {author}</title>
     <link rel="stylesheet" href="/assets/blog.css">
     <link rel="stylesheet" href="/assets/tailwind.css">
+    <noscript><link rel="stylesheet" href="/assets/no-script.css"></noscript>
 </head>
 
 <body>
@@ -401,6 +402,7 @@ PAGE = '''<!doctype html>
         </div>
     </footer>
 
+    <script src="/assets/header.js" defer></script>
     <script src="/assets/blog.js" defer></script>
     <!-- Vercel Web Analytics: cookiefrei, wird von Vercel selbst ausgeliefert. -->
     <script src="/_vercel/insights/script.js" defer></script>

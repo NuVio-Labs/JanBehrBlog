@@ -30,6 +30,7 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 104px;
 }
 
 body {
@@ -130,11 +131,20 @@ a {
 
 /* Header */
 .nav {
-    position: absolute;
+    position: fixed;
     inset: 0 0 auto;
     z-index: 5;
     height: 104px;
     border-bottom: 1px solid var(--line);
+    transition: background 220ms ease, border-color 220ms ease;
+}
+
+/* Sobald gescrollt wird, braucht die Leiste einen eigenen Hintergrund:
+   ueber dem hellen Projekttagebuch waere die weisse Schrift sonst weg. */
+body.is-scrolled .nav {
+    border-color: rgba(255, 255, 255, 0.12);
+    background: rgba(18, 20, 18, 0.92);
+    backdrop-filter: blur(18px);
 }
 
 .nav__inner {
