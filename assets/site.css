@@ -828,12 +828,40 @@ h1 em {
     line-height: 1.14;
 }
 
+.idea-card h3 a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 180ms ease;
+}
+
+.idea-card h3 a::after {
+    margin-left: 10px;
+    color: var(--olive);
+    content: "\2192";
+    font-size: 0.62em;
+    transition: transform 180ms ease;
+}
+
+.idea-card h3 a:hover,
+.idea-card h3 a:focus-visible {
+    color: var(--olive);
+}
+
 .idea-card p {
     max-width: 600px;
     margin: 18px 0 0;
     color: rgba(23, 25, 22, 0.64);
     font-size: 15px;
     line-height: 1.7;
+}
+
+.idea-card__meta {
+    margin-top: 14px;
+    color: rgba(23, 25, 22, 0.5);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
 }
 
 .misc-panel {

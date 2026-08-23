@@ -1,8 +1,11 @@
 ---
-title: "Vom CAT7-Chaos zum eigenen Netzwerkschrank – wie alles begann"
+title: "Vom CAT7-Chaos zum eigenen Netzwerkschrank – *wie alles begann*"
 slug: "001-cat7-chaos"
 date: "2026-08-20"
-draft: true
+category: "Projekttagebuch"
+lead: "Wie aus einem Kabelchaos im Keller der Anstoß für eine berufliche Neuausrichtung wurde – und was ich beim ersten eigenen Netzwerkschrank gelernt habe."
+tags: "Netzwerk, CAT7, Patchpanel, Heimnetz"
+draft: false
 ---
 
 Rückblickend war Anfang 2022 wohl der Moment, in dem der Grundstein für meine berufliche Neuausrichtung gelegt wurde. Gemeinsam mit meiner Frau und zwei Helfern sanierten wir das Erdgeschoss unseres Hauses, in dem wir bereits seit 2019 wohnten – Schritt für Schritt, damit wir währenddessen weiter dort leben konnten.

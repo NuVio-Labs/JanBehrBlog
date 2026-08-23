@@ -1,8 +1,11 @@
 ---
-title: "SmartHome – von der Spielerei zur großen Leidenschaft"
+title: "SmartHome – von der Spielerei zur *großen Leidenschaft*"
 slug: "002-smart-home-anfaenge"
 date: "2026-08-20"
-draft: true
+category: "Smart Home"
+lead: "Von einem einzelnen Echo Dot über sechs verschiedene Apps bis hin zu Home Assistant – wie aus einer Spielerei ein durchdachtes System wurde."
+tags: "Smart Home, Home Assistant, Automatisierung, Philips Hue, Zigbee"
+draft: false
 ---
 
 ## Die Anfänge
