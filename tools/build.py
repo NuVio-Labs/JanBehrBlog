@@ -182,14 +182,20 @@ def render_body(lines):
             index += 1
             continue
 
-        # Die Initiale bekommt nur ein kurzer Anreisser. Ein ganzer Absatz
-        # in Displaygroesse erschlaegt die Seite, und schmale Grossbuchstaben
-        # wie I oder J sehen als Initiale wie ein versehentlicher Strich aus.
+        # Der erste Absatz bekommt die Initiale. Nur ein kurzer Anreisser
+        # wird zusaetzlich in Displaygroesse gesetzt - ein langer Absatz
+        # erschlaegt in dieser Groesse die ganze Seite. Schmale
+        # Grossbuchstaben wie I, J oder L bleiben aussen vor, weil sie als
+        # Initiale wie ein versehentlicher senkrechter Strich aussehen.
         css_class = ''
         if not intro_done:
             plain = re.sub(r'\\(.)|[*_`]', lambda m: m.group(1) or '', line).strip()
-            if len(plain) <= INTRO_MAX_LENGTH and plain[:1] not in INTRO_BAD_INITIALS:
+            if plain[:1] in INTRO_BAD_INITIALS:
+                css_class = ''
+            elif len(plain) <= INTRO_MAX_LENGTH:
                 css_class = ' class="intro"'
+            else:
+                css_class = ' class="dropcap"'
         intro_done = True
 
         parts.append('<p{}>{}</p>'.format(css_class, render_inline(line)))

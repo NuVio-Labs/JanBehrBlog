@@ -556,6 +556,19 @@ img {
     line-height: 0.78;
 }
 
+/* Initiale für einen Absatz in normaler Textgröße. Der Faktor liegt höher
+   als bei .intro, weil er sich auf die kleinere Grundschrift bezieht und
+   trotzdem knapp zwei Zeilen überspannen soll. */
+.article-copy .dropcap::first-letter {
+    float: left;
+    margin: 0.02em 0.1em 0 0;
+    color: var(--olive);
+    font-family: "Manrope", Arial, sans-serif;
+    font-size: 4em;
+    font-weight: 600;
+    line-height: 0.78;
+}
+
 .article-copy h2 {
     margin: 88px 0 24px;
     scroll-margin-top: 45px;
