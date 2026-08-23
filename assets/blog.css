@@ -732,6 +732,11 @@ img {
     text-align: right;
 }
 
+/* Einziger Beitrag seiner Kategorie: ein Verweis über die volle Breite. */
+.article-navigation--single {
+    grid-template-columns: 1fr;
+}
+
 .article-navigation a::before {
     position: absolute;
     inset: auto auto -15rem -14rem;

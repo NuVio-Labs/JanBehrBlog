@@ -40,6 +40,14 @@ PANELS = {
     'Smart Home': 'smart-home',
 }
 
+# Kategorie -> Reiter-ID auf der Startseite, fuer den Ruecksprung.
+CATEGORY_TABS = {
+    'Projekttagebuch': 'tab-projects',
+    'Ideen & Gedanken': 'tab-ideas',
+    'Smart Home': 'tab-smart-home',
+    'Sonstiges': 'tab-misc',
+}
+
 
 # --------------------------------------------------------------------- Lesen
 
@@ -262,37 +270,48 @@ def render_toc(toc):
             '                </aside>\n').format(items)
 
 
-def render_navigation(previous, following):
-    def link(post, label, extra=''):
-        return ('            <a href="{}"{}>\n'
+def render_navigation(post, previous, following):
+    """Blaetternavigation innerhalb derselben Kategorie.
+
+    Gibt es in der Kategorie keinen Nachbarn, tritt an dessen Stelle ein
+    Rücksprung auf den passenden Reiter der Startseite. Steht der Beitrag
+    allein, bleibt es bei einem einzigen Verweis über die volle Breite.
+    """
+    def link(target, label):
+        return ('            <a href="{}">\n'
                 '                <span class="article-navigation__label">{}</span>\n'
                 '                <strong>{}</strong>\n'
-                '            </a>').format(post_url(post), extra, label,
-                                           html.escape(title_plain(display_title(post)), quote=False))
+                '            </a>').format(post_url(target), label,
+                                           html.escape(title_plain(display_title(target)), quote=False))
 
-    sides = []
-    if previous:
-        sides.append(link(previous, 'Vorheriger Beitrag'))
+    category = post.get('category', '')
+    overview = ('            <a href="{}">\n'
+                '                <span class="article-navigation__label">Übersicht</span>\n'
+                '                <strong>Alle Beiträge in {}</strong>\n'
+                '            </a>').format(category_url(category),
+                                           html.escape(category, quote=False))
+
+    # Linke Haelfte zurueck, rechte vor - das CSS richtet die zweite
+    # Spalte rechtsbuendig aus. Die fehlende Seite fuellt die Uebersicht.
+    if not previous and not following:
+        sides = [overview]
     else:
-        sides.append('            <a href="/#projekttagebuch">\n'
-                     '                <span class="article-navigation__label">Übersicht</span>\n'
-                     '                <strong>Alle Beiträge</strong>\n'
-                     '            </a>')
+        sides = [link(previous, 'Vorheriger Beitrag') if previous else overview,
+                 link(following, 'Nächster Beitrag') if following else overview]
 
-    if following:
-        sides.append(link(following, 'Nächster Beitrag'))
-    else:
-        sides.append('            <a href="/#projekttagebuch">\n'
-                     '                <span class="article-navigation__label">Übersicht</span>\n'
-                     '                <strong>Zurück zum Projekttagebuch</strong>\n'
-                     '            </a>')
-
-    return ('        <nav class="article-navigation" aria-label="Weitere Beiträge">\n'
-            + '\n'.join(sides) + '\n        </nav>')
+    modifier = ' article-navigation--single' if len(sides) == 1 else ''
+    return ('        <nav class="article-navigation{}" aria-label="Weitere Beiträge">\n'
+            .format(modifier) + '\n'.join(sides) + '\n        </nav>')
 
 
 def post_url(post):
     return '/{}/{}.html'.format(OUTPUT_DIR, post['slug'])
+
+
+def category_url(category):
+    """Verweis auf den Reiter der Startseite, der diese Kategorie zeigt."""
+    tab = CATEGORY_TABS.get(category)
+    return '/#{}'.format(tab) if tab else '/#projekttagebuch'
 
 
 # ------------------------------------------------------------------- Seiten
@@ -410,7 +429,7 @@ def render_page(post, previous, following):
         url=SITE + post_url(post),
         toc=render_toc(toc),
         body=body,
-        navigation=render_navigation(previous, following),
+        navigation=render_navigation(post, previous, following),
     )
 
 
@@ -547,14 +566,20 @@ def main():
 
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-    for position, post in enumerate(posts):
-        previous = posts[position - 1] if position else None
-        following = posts[position + 1] if position + 1 < len(posts) else None
+    for post in posts:
+        # Geblaettert wird innerhalb der Kategorie, nicht ueber alle Beitraege.
+        siblings = [other for other in posts if other.get('category') == post.get('category')]
+        position = siblings.index(post)
+
+        previous = siblings[position - 1] if position else None
+        following = siblings[position + 1] if position + 1 < len(siblings) else None
 
         target = os.path.join(OUTPUT_DIR, post['slug'] + '.html')
         with open(target, 'w', encoding='utf-8', newline='\n') as handle:
             handle.write(render_page(post, previous, following))
-        print('{} -> {} ({} Min.)'.format(post['source'], target, post['minutes']))
+        print('{} -> {} ({} Min., {} in {})'.format(
+            post['source'], target, post['minutes'],
+            '{}/{}'.format(position + 1, len(siblings)), post.get('category', '')))
 
     write_search_index(posts)
     update_index(posts)

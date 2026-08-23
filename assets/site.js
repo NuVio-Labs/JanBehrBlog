@@ -80,5 +80,20 @@ document.querySelectorAll('[data-open-tab]').forEach((link) => {
     });
 });
 
+/* Category from the address, e.g. /#tab-smart-home from an article page */
+const openCategoryFromHash = () => {
+    const target = document.getElementById(window.location.hash.slice(1));
+    if (!target || !target.classList.contains('journal-tab')) return;
+
+    activateCategoryTab(target);
+    document.getElementById('projekttagebuch')?.scrollIntoView({
+        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+        block: 'start'
+    });
+};
+
+openCategoryFromHash();
+window.addEventListener('hashchange', openCategoryFromHash);
+
 /* Footer */
 document.querySelector('[data-current-year]').textContent = new Date().getFullYear();
