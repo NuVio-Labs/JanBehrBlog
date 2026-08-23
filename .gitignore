@@ -4,3 +4,5 @@ Thumbs.db
 .vercel
 *.log
 ~$*
+__pycache__/
+*.pyc

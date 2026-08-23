@@ -1,0 +1,8 @@
+# Nicht ausliefern: Beitragsquellen und Werkzeuge.
+# Ohne Build-Schritt wuerde Vercel sonst das komplette Repo veroeffentlichen.
+
+# Entwuerfe (draft) samt Word-Originalen und Bild-Assets
+beitraege/
+
+# Import-Skript
+tools/
