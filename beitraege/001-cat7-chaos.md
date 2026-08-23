@@ -1,5 +1,6 @@
 ---
-title: "Vom CAT7-Chaos zum eigenen Netzwerkschrank – *wie alles begann*"
+title: "Vom CAT7-Chaos zum eigenen Netzwerkschrank – wie alles begann"
+headline: "Vom CAT7-Chaos zum *Netzwerkschrank*"
 slug: "001-cat7-chaos"
 date: "2026-08-20"
 category: "Projekttagebuch"

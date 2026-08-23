@@ -30,6 +30,10 @@ CSP = ("default-src 'self'; img-src 'self' data:; font-src 'self'; "
 MONATE = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni',
           'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember']
 
+# Bedingungen fuer den Anreisser-Absatz mit Initiale (siehe render_body).
+INTRO_MAX_LENGTH = 200
+INTRO_BAD_INITIALS = ('I', 'J', 'L')
+
 # Panel-Marker in index.html: Kategorie -> Markername
 PANELS = {
     'Projekttagebuch': 'projekttagebuch',
@@ -178,9 +182,16 @@ def render_body(lines):
             index += 1
             continue
 
-        # Der erste Absatz traegt die Initiale.
-        css_class = '' if intro_done else ' class="intro"'
+        # Die Initiale bekommt nur ein kurzer Anreisser. Ein ganzer Absatz
+        # in Displaygroesse erschlaegt die Seite, und schmale Grossbuchstaben
+        # wie I oder J sehen als Initiale wie ein versehentlicher Strich aus.
+        css_class = ''
+        if not intro_done:
+            plain = re.sub(r'\\(.)|[*_`]', lambda m: m.group(1) or '', line).strip()
+            if len(plain) <= INTRO_MAX_LENGTH and plain[:1] not in INTRO_BAD_INITIALS:
+                css_class = ' class="intro"'
         intro_done = True
+
         parts.append('<p{}>{}</p>'.format(css_class, render_inline(line)))
         index += 1
 
@@ -223,6 +234,16 @@ def title_plain(title):
     return title.replace('*', '')
 
 
+def display_title(post):
+    """Ueberschrift fuer die Anzeige.
+
+    Optionales Frontmatter-Feld "headline" haelt die Ueberschrift auf der
+    Seite kurz, waehrend "title" den ausfuehrlichen Titel fuer Browser-Tab,
+    Teilen-Vorschau und Suchmaschinen behaelt.
+    """
+    return post.get('headline') or post['title']
+
+
 def render_toc(toc):
     if not toc:
         return ''
@@ -241,7 +262,7 @@ def render_navigation(previous, following):
                 '                <span class="article-navigation__label">{}</span>\n'
                 '                <strong>{}</strong>\n'
                 '            </a>').format(post_url(post), extra, label,
-                                           html.escape(title_plain(post['title']), quote=False))
+                                           html.escape(title_plain(display_title(post)), quote=False))
 
     sides = []
     if previous:
@@ -372,7 +393,7 @@ def render_page(post, previous, following):
         author=AUTHOR,
         csp=CSP,
         category=html.escape(post.get('category', ''), quote=True),
-        heading=title_html(post['title']),
+        heading=title_html(display_title(post)),
         page_title=html.escape(title_plain(post['title']), quote=False),
         og_title=html.escape(title_plain(post['title']), quote=True),
         description=html.escape(post['lead'], quote=True),
@@ -403,7 +424,7 @@ def render_cards(posts):
             '                            </article>'.format(
                 index=position,
                 url=post_url(post),
-                title=html.escape(title_plain(post['title']), quote=False),
+                title=html.escape(title_plain(display_title(post)), quote=False),
                 excerpt=html.escape(post['excerpt'], quote=False),
                 date=post['date_de'],
                 minutes=post['minutes']))
@@ -446,7 +467,7 @@ def write_search_index(posts):
             '        excerpt: {excerpt},\n'
             '        tags: [{tags}]\n'
             '    }}'.format(
-                title=js_string(title_plain(post['title'])),
+                title=js_string(title_plain(display_title(post))),
                 url=js_string(post_url(post)),
                 category=js_string(post.get('category', '')),
                 meta=js_string(post['date_de']),

@@ -1,5 +1,6 @@
 ---
-title: "SmartHome – von der Spielerei zur *großen Leidenschaft*"
+title: "SmartHome – von der Spielerei zur großen Leidenschaft"
+headline: "Von der Spielerei zur *Leidenschaft*"
 slug: "002-smart-home-anfaenge"
 date: "2026-08-20"
 category: "Smart Home"

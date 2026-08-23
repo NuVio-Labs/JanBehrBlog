@@ -2,7 +2,7 @@
    Erzeugt von tools/build.py - nicht von Hand bearbeiten. */
 window.BLOG_POSTS = [
     {
-        title: 'Vom CAT7-Chaos zum eigenen Netzwerkschrank – wie alles begann',
+        title: 'Vom CAT7-Chaos zum Netzwerkschrank',
         url: '/beitrag/001-cat7-chaos.html',
         category: 'Projekttagebuch',
         meta: '20. August 2026',
@@ -10,7 +10,7 @@ window.BLOG_POSTS = [
         tags: ['Netzwerk', 'CAT7', 'Patchpanel', 'Heimnetz']
     },
     {
-        title: 'SmartHome – von der Spielerei zur großen Leidenschaft',
+        title: 'Von der Spielerei zur Leidenschaft',
         url: '/beitrag/002-smart-home-anfaenge.html',
         category: 'Smart Home',
         meta: '20. August 2026',
