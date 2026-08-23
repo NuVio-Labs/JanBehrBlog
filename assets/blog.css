@@ -1023,3 +1023,16 @@ img {
         transition-duration: 0.01ms !important;
     }
 }
+
+.footer-credit a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, 0.32);
+    text-underline-offset: 3px;
+    transition: color 180ms ease;
+}
+
+.footer-credit a:hover,
+.footer-credit a:focus-visible {
+    color: white;
+}

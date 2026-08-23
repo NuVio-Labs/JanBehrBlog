@@ -392,7 +392,7 @@ PAGE = '''<!doctype html>
 
     <footer class="site-footer">
         <div class="site-footer__inner shell">
-            <span>&copy; 2026 {author}</span>
+            <span class="footer-credit">&copy; 2026 {author} &middot; Umsetzung <a href="https://nuviolabs.de" referrerpolicy="origin">NuVio Labs</a></span>
             <nav aria-label="Rechtliches">
                 <a href="/">Startseite</a>
                 <a href="/impressum.html">Impressum</a>
