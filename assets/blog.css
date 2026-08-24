@@ -246,6 +246,12 @@ body.is-scrolled .site-header {
     letter-spacing: -0.07em;
     line-height: 0.96;
     text-wrap: balance;
+    /* Lange Komposita wie "Netzwerkschrank" sind auf schmalen Schirmen
+       breiter als das Fenster. Ohne Trennung kann die Grid-Spalte nicht
+       unter diese Breite und der ganze Kopf wird abgeschnitten. */
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    overflow-wrap: break-word;
 }
 
 .article-hero h1 em {

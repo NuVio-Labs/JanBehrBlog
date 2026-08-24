@@ -357,6 +357,10 @@ h1 {
     font-weight: 600;
     letter-spacing: -0.065em;
     line-height: 0.92;
+    /* Absicherung gegen lange Komposita auf schmalen Schirmen. */
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    overflow-wrap: break-word;
     text-wrap: balance;
     animation: reveal-copy 0.9s 0.25s both;
 }
@@ -836,6 +840,9 @@ h1 em {
     font-weight: 600;
     letter-spacing: -0.045em;
     line-height: 1.14;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    overflow-wrap: break-word;
 }
 
 .idea-card h3 a {
@@ -1484,13 +1491,16 @@ h1 em {
         display: none;
     }
 
+    /* Die feste Mindestbreite der rechten Spalte ergab zusammen mit der
+       linken und dem Abstand mehr als die Shell zwischen 680 und 800 px
+       hergibt. Der Ueberhang wurde von journal-browser abgeschnitten. */
     .process__layout {
-        grid-template-columns: minmax(260px, 0.72fr) minmax(440px, 1.28fr);
+        grid-template-columns: minmax(200px, 0.72fr) minmax(0, 1.28fr);
         gap: 58px;
     }
 
     .category-layout {
-        grid-template-columns: minmax(260px, 0.72fr) minmax(420px, 1.28fr);
+        grid-template-columns: minmax(200px, 0.72fr) minmax(0, 1.28fr);
         gap: 58px;
     }
 }
