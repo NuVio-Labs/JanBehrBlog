@@ -285,10 +285,15 @@ def render_navigation(post, previous, following):
     allein, bleibt es bei einem einzigen Verweis über die volle Breite.
     """
     def link(target, label):
+        # Gehoert der Nachbar zum selben Projekt, ist er keine Fortsetzung,
+        # sondern dieselbe Sache aus anderem Blickwinkel.
+        if post.get('group') and target.get('group') == post.get('group'):
+            label = 'Dasselbe Projekt als {}'.format(target.get('variant', 'Beitrag'))
+
         return ('            <a href="{}">\n'
                 '                <span class="article-navigation__label">{}</span>\n'
                 '                <strong>{}</strong>\n'
-                '            </a>').format(post_url(target), label,
+                '            </a>').format(post_url(target), html.escape(label, quote=False),
                                            html.escape(title_plain(display_title(target)), quote=False))
 
     category = post.get('category', '')
@@ -368,7 +373,7 @@ PAGE = '''<!doctype html>
             <section class="article-hero" aria-labelledby="article-title">
                 <div class="article-hero__grid shell">
                     <div>
-                        <p class="article-kicker">{category}</p>
+                        <p class="article-kicker">{category}{variant}</p>
                         <h1 id="article-title">{heading}</h1>
                         <p class="article-hero__lead">{lead}</p>
                         <div class="article-meta">
@@ -427,6 +432,8 @@ def render_page(post, previous, following):
         author=AUTHOR,
         csp=CSP,
         category=html.escape(post.get('category', ''), quote=True),
+        variant=('<span class="article-kicker__variant">{}</span>'.format(
+            html.escape(post['variant'], quote=False)) if post.get('variant') else ''),
         heading=title_html(display_title(post)),
         page_title=html.escape(title_plain(post['title']), quote=False),
         og_title=html.escape(title_plain(post['title']), quote=True),
@@ -444,24 +451,72 @@ def render_page(post, previous, following):
 
 # -------------------------------------------------------------- Startseite
 
+def group_posts(posts):
+    """Fasst Beitraege mit gleichem group-Schluessel zu einem Eintrag zusammen.
+
+    Zwei Beitraege koennen dasselbe Projekt aus verschiedenen Blickwinkeln
+    behandeln. In der Uebersicht sollen sie als ein Eintrag erscheinen, auf
+    eigenen Seiten aber getrennt bleiben.
+    """
+    entries = []
+    seen = {}
+
+    for post in posts:
+        key = post.get('group')
+        if not key:
+            entries.append([post])
+            continue
+        if key in seen:
+            seen[key].append(post)
+        else:
+            seen[key] = [post]
+            entries.append(seen[key])
+
+    return entries
+
+
 def render_cards(posts):
     cards = []
-    for position, post in enumerate(posts, start=1):
+
+    for position, entry in enumerate(group_posts(posts), start=1):
+        if len(entry) == 1:
+            post = entry[0]
+            heading = '<h3><a href="{}">{}</a></h3>'.format(
+                post_url(post), html.escape(title_plain(display_title(post)), quote=False))
+            body = ('                                    <p>{}</p>\n'
+                    '                                    <p class="idea-card__meta">{} · {} Min. Lesezeit</p>'
+                    .format(html.escape(post['excerpt'], quote=False),
+                            post['date_de'], post['minutes']))
+        else:
+            first = entry[0]
+            title = first.get('group_title') or title_plain(display_title(first))
+            summary = first.get('group_lead') or first['excerpt']
+            heading = '<h3>{}</h3>'.format(html.escape(title, quote=False))
+
+            variants = '\n'.join(
+                '                                        <li><a href="{}">'
+                '<span class="idea-card__variant">{}</span>'
+                '<span class="idea-card__meta">{} Min. Lesezeit</span></a></li>'.format(
+                    post_url(post),
+                    html.escape(post.get('variant', 'Beitrag'), quote=False),
+                    post['minutes'])
+                for post in entry)
+
+            body = ('                                    <p>{}</p>\n'
+                    '                                    <ul class="idea-card__variants">\n{}\n'
+                    '                                    </ul>'
+                    .format(html.escape(summary, quote=False), variants))
+
         cards.append(
             '                            <article class="idea-card">\n'
             '                                <span class="idea-card__index">{index:02d}</span>\n'
             '                                <div>\n'
-            '                                    <h3><a href="{url}">{title}</a></h3>\n'
-            '                                    <p>{excerpt}</p>\n'
-            '                                    <p class="idea-card__meta">{date} · {minutes} Min. Lesezeit</p>\n'
+            '                                    {heading}\n'
+            '{body}\n'
             '                                </div>\n'
             '                            </article>'.format(
-                index=position,
-                url=post_url(post),
-                title=html.escape(title_plain(display_title(post)), quote=False),
-                excerpt=html.escape(post['excerpt'], quote=False),
-                date=post['date_de'],
-                minutes=post['minutes']))
+                index=position, heading=heading, body=body))
+
     return '\n'.join(cards)
 
 
@@ -520,11 +575,155 @@ def js_string(value):
     return "'" + value.replace('\\', '\\\\').replace("'", "\\'") + "'"
 
 
+GALLERY_PAGE = '''<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{description}">
+    <meta name="author" content="{author}">
+    <meta name="referrer" content="no-referrer">
+    <meta http-equiv="Content-Security-Policy" content="{csp}">
+    <meta name="theme-color" content="#eff0e9">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{title}">
+    <meta property="og:description" content="{description}">
+    <meta property="og:url" content="{url}">
+    <link rel="canonical" href="{url}">
+    <link rel="preload" href="/assets/fonts/dm-sans-variable.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/manrope-variable.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <title>{title} | {author}</title>
+    <link rel="stylesheet" href="/assets/blog.css">
+    <link rel="stylesheet" href="/assets/tailwind.css">
+    <noscript><link rel="stylesheet" href="/assets/no-script.css"></noscript>
+</head>
+
+<body>
+    <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
+
+    <header class="site-header">
+        <div class="site-header__inner shell">
+            <a class="brand" href="/#start" aria-label="{author}, Startseite">
+                <span class="brand__mark" aria-hidden="true">JB</span>
+                <span>{author}</span>
+            </a>
+            <a class="back-link" href="/"><span aria-hidden="true">&#8592;</span> Zur Startseite</a>
+        </div>
+    </header>
+
+    <main id="main-content" tabindex="-1">
+        <section class="article-hero" aria-labelledby="gallery-title">
+            <div class="article-hero__grid shell">
+                <div>
+                    <p class="article-kicker">Galerie</p>
+                    <h1 id="gallery-title">{heading}</h1>
+                    <p class="article-hero__lead">{lead}</p>
+                    <div class="article-meta">
+                        <span>{count}</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="gallery">
+            <div class="shell">
+{items}            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="site-footer__inner shell">
+            <span class="footer-credit">&copy; 2026 {author} &middot; Umsetzung <a href="https://nuviolabs.de" referrerpolicy="origin">NuVio Labs</a></span>
+            <nav aria-label="Rechtliches">
+                <a href="/">Startseite</a>
+                <a href="/impressum.html">Impressum</a>
+                <a href="/datenschutz.html">Datenschutz</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script src="/assets/header.js" defer></script>
+    <!-- Vercel Web Analytics: cookiefrei, wird von Vercel selbst ausgeliefert. -->
+    <script src="/_vercel/insights/script.js" defer></script>
+</body>
+</html>
+'''
+
+
+def build_gallery():
+    """Erzeugt galerie.html aus galerie/galerie.md.
+
+    Jede Bildzeile der Quelle wird zu einer Abbildung; die Bildunterschrift
+    dient zugleich als Alternativtext. Ohne Bilder erscheint ein
+    Leerzustand statt einer leeren Seite.
+    """
+    source = os.path.join('galerie', 'galerie.md')
+    if not os.path.exists(source):
+        return 0
+
+    meta, lines = parse_post(source)
+
+    # Die Anleitung in der Quelle steht in einem HTML-Kommentar und enthaelt
+    # eine Beispielzeile - die darf nicht als echtes Bild gelesen werden.
+    body = re.sub(r'<!--.*?-->', '', '\n'.join(lines), flags=re.S)
+
+    pictures = []
+    missing = []
+
+    for line in body.split('\n'):
+        match = re.match(r'^!\[([^\]]*)\]\(([^)]+)\)\s*$', line.strip())
+        if not match:
+            continue
+        caption, filename = match.group(1).strip(), match.group(2).strip()
+        if not os.path.exists(os.path.join('galerie', 'bilder', os.path.basename(filename))):
+            missing.append(filename)
+            continue
+        pictures.append((caption, filename))
+
+    if pictures:
+        items = '\n'.join(
+            '                <figure class="gallery__item">\n'
+            '                    <img src="/galerie/bilder/{file}" alt="{alt}" loading="lazy" decoding="async">\n'
+            '                    <figcaption>{caption}</figcaption>\n'
+            '                </figure>'.format(
+                file=html.escape(os.path.basename(filename), quote=True),
+                alt=html.escape(caption, quote=True),
+                caption=html.escape(caption, quote=False))
+            for caption, filename in pictures)
+        items = '                <div class="gallery__grid">\n{}\n                </div>\n'.format(items)
+        count = '{} {}'.format(len(pictures), 'Aufnahme' if len(pictures) == 1 else 'Aufnahmen')
+    else:
+        items = ('                <p class="gallery__empty">Hier entsteht gerade eine Auswahl '
+                 'von Aufnahmen aus meinen Projekten.</p>\n')
+        count = 'In Arbeit'
+
+    with open('galerie.html', 'w', encoding='utf-8', newline='\n') as handle:
+        handle.write(GALLERY_PAGE.format(
+            author=AUTHOR,
+            csp=CSP,
+            title=html.escape(title_plain(meta['title']), quote=True),
+            heading=title_html(meta.get('headline') or meta['title']),
+            lead=html.escape(meta.get('lead', ''), quote=False),
+            description=html.escape(meta.get('lead', ''), quote=True),
+            url=SITE + '/galerie.html',
+            count=count,
+            items=items))
+
+    for filename in missing:
+        print('  Hinweis: galerie/bilder/{} fehlt, Zeile uebersprungen'.format(filename))
+
+    return len(pictures)
+
+
 def write_sitemap(posts):
     """Schreibt sitemap.xml aus Startseite, Beitraegen und Rechtsseiten."""
     entries = [(SITE + '/', max(post['date'] for post in posts), '1.0')]
     entries += [(SITE + post_url(post), post['date'], '0.8') for post in posts]
-    entries += [(SITE + '/impressum.html', '', '0.2'),
+    entries += [(SITE + '/galerie.html', '', '0.6'),
+                (SITE + '/impressum.html', '', '0.2'),
                 (SITE + '/datenschutz.html', '', '0.2')]
 
     lines = ['<?xml version="1.0" encoding="UTF-8"?>',
@@ -593,6 +792,10 @@ def main():
     write_search_index(posts)
     update_index(posts)
     write_sitemap(posts)
+
+    count = build_gallery()
+    print('galerie.html: {}'.format(
+        '{} Bild(er)'.format(count) if count else 'noch ohne Bilder'))
     print('\nassets/posts.js, index.html und sitemap.xml aktualisiert '
           '({} Beitraege).'.format(len(posts)))
     return 0

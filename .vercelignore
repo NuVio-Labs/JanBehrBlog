@@ -6,3 +6,6 @@ beitraege/
 
 # Import-Skript
 tools/
+
+# Galerie-Quelle; die Bilder unter galerie/bilder/ bleiben drin.
+galerie/*.md

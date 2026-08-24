@@ -3,6 +3,8 @@ title: "Projekt *Netzwerk~schrank*"
 slug: "001-projektdokumentation-netzwerkschrank"
 date: "2026-08-21"
 category: "Projekttagebuch"
+group: "netzwerkschrank"
+variant: "Dokumentation"
 lead: "Von der Montage bis zur Fehlersuche: die vollständige Dokumentation, wie 16 CAT7-Leitungen aus dem Keller in einen 19-Zoll-Schrank gewandert sind."
 tags: "Netzwerkschrank, Patchpanel, CAT7, Dokumentation, Home Assistant"
 draft: false

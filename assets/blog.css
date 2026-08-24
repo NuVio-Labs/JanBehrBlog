@@ -237,6 +237,15 @@ body.is-scrolled .site-header {
     content: "";
 }
 
+/* Leseart neben der Kategorie: Geschichte oder Dokumentation. */
+.article-kicker__variant {
+    padding: 4px 11px;
+    border: 1px solid rgba(23, 25, 22, 0.22);
+    border-radius: 999px;
+    font-size: 10px;
+    letter-spacing: 0.13em;
+}
+
 .article-hero h1 {
     max-width: 1050px;
     margin: 0;
@@ -482,6 +491,59 @@ body.is-scrolled .site-header {
 }
 
 /* Article content */
+/* Galerie: ruhiges Raster, die Aufnahmen tragen die Seite.
+   Bewusst ohne Schatten, Rahmen oder Hover-Spielereien. */
+.gallery {
+    padding: clamp(80px, 9vw, 130px) 0 clamp(100px, 11vw, 160px);
+    background: var(--paper-soft);
+}
+
+.gallery__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: clamp(40px, 5vw, 78px) clamp(28px, 3vw, 48px);
+}
+
+.gallery__item {
+    margin: 0;
+}
+
+.gallery__item img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border-radius: 16px;
+    object-fit: cover;
+    background: rgba(23, 25, 22, 0.06);
+}
+
+.gallery__item figcaption {
+    max-width: 46ch;
+    margin-top: 16px;
+    color: rgba(23, 25, 22, 0.62);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* Eine einzelne Aufnahme steht fuer sich, ohne Rasterzwang. */
+.gallery__grid:has(.gallery__item:only-child) {
+    grid-template-columns: minmax(0, 760px);
+    justify-content: center;
+}
+
+.gallery__empty {
+    max-width: 44ch;
+    margin: 0;
+    color: rgba(23, 25, 22, 0.55);
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+@media (max-width: 620px) {
+    .gallery__grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 .article-body {
     padding: clamp(90px, 10vw, 150px) 0;
     background: var(--paper-soft);

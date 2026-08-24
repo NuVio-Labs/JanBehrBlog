@@ -881,6 +881,52 @@ h1 em {
     text-transform: uppercase;
 }
 
+/* Ein Projekt, mehrere Lesearten: die Wege in einen Beitrag. */
+.idea-card__variants {
+    display: grid;
+    gap: 1px;
+    margin: 22px 0 0;
+    padding: 0;
+    list-style: none;
+    background: rgba(23, 25, 22, 0.12);
+    border-block: 1px solid rgba(23, 25, 22, 0.12);
+}
+
+.idea-card__variants a {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 6px 20px;
+    padding: 15px 2px;
+    background: #f7f7f2;
+    transition: padding-left 200ms ease, color 200ms ease;
+}
+
+.idea-card__variant {
+    font-family: "Manrope", Arial, sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+.idea-card__variant::after {
+    margin-left: 10px;
+    color: var(--olive);
+    content: "→";
+    font-size: 0.8em;
+}
+
+.idea-card__variants .idea-card__meta {
+    margin-top: 0;
+}
+
+.idea-card__variants a:hover,
+.idea-card__variants a:focus-visible {
+    padding-left: 10px;
+    color: var(--olive);
+}
+
 .misc-panel {
     display: grid;
     min-height: 560px;
