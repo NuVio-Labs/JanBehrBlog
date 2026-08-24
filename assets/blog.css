@@ -247,10 +247,12 @@ body.is-scrolled .site-header {
     line-height: 0.96;
     text-wrap: balance;
     /* Lange Komposita wie "Netzwerkschrank" sind auf schmalen Schirmen
-       breiter als das Fenster. Ohne Trennung kann die Grid-Spalte nicht
-       unter diese Breite und der ganze Kopf wird abgeschnitten. */
-    -webkit-hyphens: auto;
-    hyphens: auto;
+       breiter als das Fenster und wuerden den Kopf abschneiden. Getrennt
+       wird nur an Stellen, die im Frontmatter mit ~ markiert sind:
+       automatische Trennung zerlegt sonst auch Woerter wie "Chaos".
+       overflow-wrap bleibt als letzte Absicherung. */
+    -webkit-hyphens: manual;
+    hyphens: manual;
     overflow-wrap: break-word;
 }
 
@@ -929,7 +931,9 @@ body.is-scrolled .site-header {
     }
 
     .article-hero h1 {
-        font-size: clamp(46px, 14vw, 62px);
+        /* Etwas kleiner als zuvor, damit "Vom CAT7-Chaos" auf eine Zeile
+           passt und die Ueberschrift mit drei statt vier Zeilen auskommt. */
+        font-size: clamp(36px, 12vw, 62px);
     }
 
     .article-hero__lead {

@@ -357,9 +357,9 @@ h1 {
     font-weight: 600;
     letter-spacing: -0.065em;
     line-height: 0.92;
-    /* Absicherung gegen lange Komposita auf schmalen Schirmen. */
-    -webkit-hyphens: auto;
-    hyphens: auto;
+    /* Getrennt wird nur an gesetzten Stellen, nicht automatisch. */
+    -webkit-hyphens: manual;
+    hyphens: manual;
     overflow-wrap: break-word;
     text-wrap: balance;
     animation: reveal-copy 0.9s 0.25s both;
@@ -840,8 +840,8 @@ h1 em {
     font-weight: 600;
     letter-spacing: -0.045em;
     line-height: 1.14;
-    -webkit-hyphens: auto;
-    hyphens: auto;
+    -webkit-hyphens: manual;
+    hyphens: manual;
     overflow-wrap: break-word;
 }
 

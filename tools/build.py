@@ -240,12 +240,19 @@ def excerpt_of(lines):
 
 
 def title_html(title):
-    """*Sternchen* im Titel werden zur farbigen Hervorhebung."""
-    return re.sub(r'\*([^*]+)\*', r'<em>\1</em>', html.escape(title, quote=False))
+    """Setzt die Auszeichnungen des Titels in HTML um.
+
+    *Sternchen* wird zur farbigen Hervorhebung, eine Tilde zu einem
+    weichen Trennstrich: Dort darf die Ueberschrift auf schmalen
+    Schirmen umbrechen, sonst nirgends. Die Tilde selbst ist unsichtbar.
+    """
+    markup = re.sub(r'\*([^*]+)\*', r'<em>\1</em>', html.escape(title, quote=False))
+    return markup.replace('~', '&shy;')
 
 
 def title_plain(title):
-    return title.replace('*', '')
+    """Reine Textfassung ohne Auszeichnung, fuer Titel und Metadaten."""
+    return title.replace('*', '').replace('~', '')
 
 
 def display_title(post):

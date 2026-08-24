@@ -1,5 +1,5 @@
 ---
-title: "Projekt *Netzwerkschrank*"
+title: "Projekt *Netzwerk~schrank*"
 slug: "001-projektdokumentation-netzwerkschrank"
 date: "2026-08-21"
 category: "Projekttagebuch"
