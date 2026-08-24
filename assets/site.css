@@ -1264,17 +1264,23 @@ h1 em {
 .project-entry {
     position: relative;
     margin-left: 82px;
-    padding: 26px 0 26px 28px;
+    padding: 26px 26px 26px 28px;
+    border-top: 1px solid rgba(23, 25, 22, 0.14);
     border-left: 1px solid rgba(23, 25, 22, 0.18);
 }
 
+/* Die Gruppe wird unten geschlossen, damit sie als Block endet. */
+.project-entry:last-of-type {
+    border-bottom: 1px solid rgba(23, 25, 22, 0.14);
+}
+
 .project-entry:first-of-type {
-    margin-top: 30px;
+    margin-top: 28px;
 }
 
 .project-entry::before {
     position: absolute;
-    top: 38px;
+    top: 34px;
     left: -4px;
     width: 7px;
     height: 7px;
@@ -1334,7 +1340,12 @@ h1 em {
 
 /* Die Erzaehlung wirkt offen und einladend. */
 .project-entry--geschichte .project-entry__badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border: 1px solid rgba(92, 118, 24, 0.42);
+    border-radius: 4px;
     color: var(--olive);
+    letter-spacing: 0.12em;
 }
 
 /* Die Dokumentation gibt sich sachlicher: eigener Grund, engere
