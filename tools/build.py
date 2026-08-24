@@ -475,48 +475,86 @@ def group_posts(posts):
     return entries
 
 
+def variant_slug(variant):
+    """Kennung fuer die Gestaltung, z. B. Dokumentation -> dokumentation."""
+    base = variant.lower()
+    for umlaut, replacement in (('ä', 'ae'), ('ö', 'oe'), ('ü', 'ue'), ('ß', 'ss')):
+        base = base.replace(umlaut, replacement)
+    return re.sub(r'[^a-z0-9]+', '-', base).strip('-') or 'beitrag'
+
+
+def render_single_card(post, position):
+    return (
+        '                            <article class="idea-card">\n'
+        '                                <span class="idea-card__index">{index:02d}</span>\n'
+        '                                <div>\n'
+        '                                    <h3><a href="{url}">{title}</a></h3>\n'
+        '                                    <p>{excerpt}</p>\n'
+        '                                    <p class="idea-card__meta">{date} · {minutes} Min. Lesezeit</p>\n'
+        '                                </div>\n'
+        '                            </article>'.format(
+            index=position,
+            url=post_url(post),
+            title=html.escape(title_plain(display_title(post)), quote=False),
+            excerpt=html.escape(post['excerpt'], quote=False),
+            date=post['date_de'],
+            minutes=post['minutes']))
+
+
+def render_group_card(entry, position):
+    """Ein Projekt, mehrere Beitraege.
+
+    Die Beitraege bleiben eigenstaendige Eintraege mit eigener
+    Anmutung; zusammengehalten werden sie von einer gemeinsamen
+    Projektzeile und einer durchgehenden Linie an der linken Seite.
+    """
+    first = entry[0]
+    title = first.get('group_title') or title_plain(display_title(first))
+    summary = first.get('group_lead') or first['excerpt']
+
+    entries = []
+    for post in entry:
+        variant = post.get('variant', 'Beitrag')
+        entries.append(
+            '                                <article class="project-entry project-entry--{slug}">\n'
+            '                                    <p class="project-entry__badge">{variant}</p>\n'
+            '                                    <h4><a href="{url}">{title}</a></h4>\n'
+            '                                    <p class="project-entry__text">{excerpt}</p>\n'
+            '                                    <p class="idea-card__meta">{date} · {minutes} Min. Lesezeit</p>\n'
+            '                                </article>'.format(
+                slug=variant_slug(variant),
+                variant=html.escape(variant, quote=False),
+                url=post_url(post),
+                title=html.escape(title_plain(display_title(post)), quote=False),
+                excerpt=html.escape(post['excerpt'], quote=False),
+                date=post['date_de'],
+                minutes=post['minutes']))
+
+    return (
+        '                            <section class="project-group" aria-label="{aria}">\n'
+        '                                <div class="project-group__head">\n'
+        '                                    <span class="idea-card__index">{index:02d}</span>\n'
+        '                                    <div>\n'
+        '                                        <h3>{title}</h3>\n'
+        '                                        <p>{summary}</p>\n'
+        '                                    </div>\n'
+        '                                </div>\n'
+        '{entries}\n'
+        '                            </section>'.format(
+            aria=html.escape(title, quote=True),
+            index=position,
+            title=html.escape(title, quote=False),
+            summary=html.escape(summary, quote=False),
+            entries='\n'.join(entries)))
+
+
 def render_cards(posts):
     cards = []
-
     for position, entry in enumerate(group_posts(posts), start=1):
         if len(entry) == 1:
-            post = entry[0]
-            heading = '<h3><a href="{}">{}</a></h3>'.format(
-                post_url(post), html.escape(title_plain(display_title(post)), quote=False))
-            body = ('                                    <p>{}</p>\n'
-                    '                                    <p class="idea-card__meta">{} · {} Min. Lesezeit</p>'
-                    .format(html.escape(post['excerpt'], quote=False),
-                            post['date_de'], post['minutes']))
+            cards.append(render_single_card(entry[0], position))
         else:
-            first = entry[0]
-            title = first.get('group_title') or title_plain(display_title(first))
-            summary = first.get('group_lead') or first['excerpt']
-            heading = '<h3>{}</h3>'.format(html.escape(title, quote=False))
-
-            variants = '\n'.join(
-                '                                        <li><a href="{}">'
-                '<span class="idea-card__variant">{}</span>'
-                '<span class="idea-card__meta">{} Min. Lesezeit</span></a></li>'.format(
-                    post_url(post),
-                    html.escape(post.get('variant', 'Beitrag'), quote=False),
-                    post['minutes'])
-                for post in entry)
-
-            body = ('                                    <p>{}</p>\n'
-                    '                                    <ul class="idea-card__variants">\n{}\n'
-                    '                                    </ul>'
-                    .format(html.escape(summary, quote=False), variants))
-
-        cards.append(
-            '                            <article class="idea-card">\n'
-            '                                <span class="idea-card__index">{index:02d}</span>\n'
-            '                                <div>\n'
-            '                                    {heading}\n'
-            '{body}\n'
-            '                                </div>\n'
-            '                            </article>'.format(
-                index=position, heading=heading, body=body))
-
+            cards.append(render_group_card(entry, position))
     return '\n'.join(cards)
 
 

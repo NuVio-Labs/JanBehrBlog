@@ -881,58 +881,6 @@ h1 em {
     text-transform: uppercase;
 }
 
-/* Ein Projekt, mehrere Lesearten: die Wege in einen Beitrag. */
-.idea-card__variants {
-    display: grid;
-    gap: 1px;
-    margin: 22px 0 0;
-    padding: 0;
-    list-style: none;
-    background: rgba(23, 25, 22, 0.12);
-    border-block: 1px solid rgba(23, 25, 22, 0.12);
-}
-
-.idea-card__variants a {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 6px 20px;
-    padding: 15px 2px;
-    background: #f7f7f2;
-    transition: padding-left 200ms ease, color 200ms ease;
-}
-
-.idea-card__variant {
-    font-family: "Manrope", Arial, sans-serif;
-    font-size: 17px;
-    font-weight: 600;
-    letter-spacing: -0.02em;
-}
-
-.idea-card__variant::after {
-    margin-left: 10px;
-    color: var(--olive);
-    content: "→";
-    font-size: 0.8em;
-}
-
-.idea-card__variants .idea-card__meta {
-    margin-top: 0;
-}
-
-.idea-card__variants a:hover,
-.idea-card__variants a:focus-visible {
-    padding-left: 10px;
-    color: var(--olive);
-}
-
-.misc-panel {
-    display: grid;
-    min-height: 560px;
-    place-items: center;
-    text-align: center;
-}
 
 .misc-panel__inner {
     max-width: 560px;
@@ -1269,6 +1217,156 @@ h1 em {
 .home-footer__nav a:hover,
 .home-footer__nav a:focus-visible {
     color: white;
+}
+
+/* Ein Projekt, mehrere Beitraege.
+   Die Eintraege sollen eigenstaendig wirken, aber sichtbar
+   zusammengehoeren: gemeinsamer Kopf, durchgehende Linie links. */
+.project-group {
+    padding: 26px 0 40px;
+    border-top: 1px solid rgba(23, 25, 22, 0.18);
+}
+
+.project-group + .project-group,
+.project-group + .idea-card,
+.idea-card + .project-group {
+    margin-top: 28px;
+}
+
+.project-group__head {
+    display: grid;
+    grid-template-columns: 56px minmax(0, 1fr);
+    gap: 26px;
+}
+
+.project-group__head h3 {
+    margin: 0;
+    font-family: "Manrope", Arial, sans-serif;
+    font-size: clamp(27px, 2.35vw, 38px);
+    font-weight: 600;
+    letter-spacing: -0.045em;
+    line-height: 1.14;
+    -webkit-hyphens: manual;
+    hyphens: manual;
+    overflow-wrap: break-word;
+}
+
+.project-group__head p {
+    max-width: 600px;
+    margin: 16px 0 0;
+    color: rgba(23, 25, 22, 0.64);
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+/* Die Linie beginnt unter der Nummer und laeuft an beiden
+   Eintraegen entlang - das haelt sie optisch zusammen. */
+.project-entry {
+    position: relative;
+    margin-left: 82px;
+    padding: 26px 0 26px 28px;
+    border-left: 1px solid rgba(23, 25, 22, 0.18);
+}
+
+.project-entry:first-of-type {
+    margin-top: 30px;
+}
+
+.project-entry::before {
+    position: absolute;
+    top: 38px;
+    left: -4px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--olive);
+    content: "";
+}
+
+.project-entry__badge {
+    margin: 0 0 12px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.project-entry h4 {
+    margin: 0;
+    font-family: "Manrope", Arial, sans-serif;
+    font-size: clamp(21px, 1.6vw, 26px);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    -webkit-hyphens: manual;
+    hyphens: manual;
+    overflow-wrap: break-word;
+}
+
+.project-entry h4 a {
+    color: inherit;
+    transition: color 180ms ease;
+}
+
+.project-entry h4 a::after {
+    margin-left: 9px;
+    color: var(--olive);
+    content: "→";
+    font-size: 0.72em;
+}
+
+.project-entry h4 a:hover,
+.project-entry h4 a:focus-visible {
+    color: var(--olive);
+}
+
+.project-entry__text {
+    max-width: 560px;
+    margin: 12px 0 0;
+    color: rgba(23, 25, 22, 0.64);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.project-entry .idea-card__meta {
+    margin-top: 12px;
+}
+
+/* Die Erzaehlung wirkt offen und einladend. */
+.project-entry--geschichte .project-entry__badge {
+    color: var(--olive);
+}
+
+/* Die Dokumentation gibt sich sachlicher: eigener Grund, engere
+   Laufweite in der Kennzeichnung. */
+.project-entry--dokumentation {
+    background: linear-gradient(90deg, rgba(23, 25, 22, 0.035), transparent 62%);
+}
+
+.project-entry--dokumentation .project-entry__badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 4px;
+    color: #f7f7f2;
+    background: var(--ink);
+    letter-spacing: 0.12em;
+}
+
+.project-entry--dokumentation .project-entry__text {
+    font-family: "DM Sans", Arial, sans-serif;
+    color: rgba(23, 25, 22, 0.7);
+}
+
+@media (max-width: 680px) {
+    .project-group__head {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .project-entry {
+        margin-left: 0;
+        padding-left: 20px;
+    }
 }
 
 /* Search */
