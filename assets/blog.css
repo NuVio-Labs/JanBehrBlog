@@ -749,7 +749,9 @@ body.is-scrolled .site-header {
     text-align: right;
 }
 
-/* Einziger Beitrag seiner Kategorie: ein Verweis über die volle Breite. */
+/* Einziger Beitrag seiner Kategorie: ein Verweis über die volle Breite.
+   Ohne zweite Spalte darf der Titel nicht rechtsbündig stehen, sonst
+   trennt er sich optisch von seinem Label auf der linken Seite. */
 .article-navigation--single {
     grid-template-columns: 1fr;
 }
@@ -795,12 +797,24 @@ body.is-scrolled .site-header {
     align-self: flex-end;
 }
 
+/* Steht nur ein Verweis da, gehoert der Titel unter sein Label nach
+   links. Muss nach der Regel oben stehen, gleiche Spezifitaet. */
+.article-navigation--single a:last-child strong {
+    align-self: flex-start;
+}
+
 /* Footer */
 .site-footer {
     padding: 32px 0;
     color: rgba(255, 255, 255, 0.46);
     background: var(--ink);
     font-size: 11px;
+}
+
+.site-footer__inner nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 20px;
 }
 
 .site-footer__inner {
