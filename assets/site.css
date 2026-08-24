@@ -1287,6 +1287,12 @@ h1 em {
     border-radius: 50%;
     background: var(--olive);
     content: "";
+    animation: pulse-marker 3.4s ease-out infinite;
+}
+
+/* Versetzt, damit die beiden Punkte nicht im Gleichschritt schlagen. */
+.project-entry + .project-entry::before {
+    animation-delay: 1.7s;
 }
 
 .project-entry__badge {
@@ -1561,6 +1567,23 @@ h1 em {
 }
 
 /* Motion */
+/* Weicher Puls fuer den Markierungspunkt: nur ein Hof, der aufgeht
+   und verklingt. Der Punkt selbst bleibt ruhig, damit die Linie nicht
+   wackelt. */
+@keyframes pulse-marker {
+    0% {
+        box-shadow: 0 0 0 0 rgba(92, 118, 24, 0.3);
+    }
+
+    70% {
+        box-shadow: 0 0 0 7px rgba(92, 118, 24, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(92, 118, 24, 0);
+    }
+}
+
 @keyframes reveal-copy {
     from { opacity: 0; transform: translateY(24px); }
     to { opacity: 1; transform: translateY(0); }
