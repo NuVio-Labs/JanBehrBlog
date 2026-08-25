@@ -37,4 +37,14 @@
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }]
     }
   ]
+  ,
+  "rewrites": [
+    { "source": "/cv/:schluessel", "destination": "/api/cv?k=:schluessel" },
+    { "source": "/cv/:schluessel/:datei", "destination": "/api/cv?k=:schluessel&d=:datei" }
+  ],
+  "functions": {
+    "api/cv.js": {
+      "includeFiles": "api/_quelle/**"
+    }
+  }
 }

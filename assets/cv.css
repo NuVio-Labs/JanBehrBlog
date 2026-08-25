@@ -1,0 +1,431 @@
+/* Bewerbungsseite unter /cv.
+   Nutzt die Tokens und Schriften der Website, bringt aber ein eigenes
+   Raster mit: die Seite ist ein Dokument, keine Blogseite. */
+
+.cv {
+    padding: 72px 0 0;
+}
+
+.cv__shell {
+    width: min(100% - 48px, 960px);
+    margin-inline: auto;
+}
+
+/* Kopf */
+
+.cv-head {
+    display: grid;
+    gap: 36px;
+    padding-bottom: 56px;
+    border-bottom: 1px solid var(--line);
+}
+
+.cv-head__portrait {
+    width: 132px;
+    height: 132px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    object-fit: cover;
+}
+
+.cv-head__name {
+    margin: 0 0 6px;
+    font-family: "Manrope", Arial, sans-serif;
+    font-size: clamp(38px, 6vw, 62px);
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+}
+
+.cv-head__role {
+    margin: 0 0 22px;
+    color: var(--lime);
+    font-size: clamp(16px, 2.4vw, 19px);
+    font-weight: 600;
+}
+
+.cv-head__intro {
+    max-width: 62ch;
+    margin: 0 0 28px;
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.65;
+}
+
+.cv-head__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 30px;
+    padding: 9px 18px;
+    border: 1px solid rgba(201, 244, 90, 0.4);
+    border-radius: 999px;
+    background: rgba(201, 244, 90, 0.1);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.cv-head__badge::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background: var(--lime);
+}
+
+/* Kontaktzeile */
+
+.cv-contact {
+    display: grid;
+    gap: 18px 40px;
+    margin: 0;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+}
+
+.cv-contact div {
+    min-width: 0;
+}
+
+.cv-contact dt {
+    margin-bottom: 3px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.cv-contact dd {
+    margin: 0;
+    font-size: 15px;
+    overflow-wrap: anywhere;
+}
+
+.cv-contact a:hover,
+.cv-contact a:focus-visible {
+    color: var(--lime);
+}
+
+/* Abschnitte */
+
+.cv-section {
+    padding: 62px 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.cv-section__title {
+    margin: 0 0 34px;
+    font-family: "Manrope", Arial, sans-serif;
+    font-size: clamp(24px, 3.4vw, 34px);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+.cv-section__note {
+    margin: 26px 0 0;
+    max-width: 80ch;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+/* Fakten */
+
+.cv-facts {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.cv-fact {
+    padding: 22px 24px;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.cv-fact h3 {
+    margin: 0 0 8px;
+    color: var(--lime);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.cv-fact p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Anschreiben */
+
+.cv-letter {
+    max-width: 74ch;
+    padding: 34px 34px 38px;
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.cv-letter p {
+    margin: 0 0 18px;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.75;
+}
+
+.cv-letter__date,
+.cv-letter__greeting {
+    color: rgba(255, 255, 255, 0.92);
+}
+
+.cv-letter__date {
+    margin-bottom: 28px;
+    font-size: 14px;
+}
+
+.cv-letter__sign {
+    margin: 26px 0 0;
+    color: white;
+    font-weight: 600;
+}
+
+/* Werdegang */
+
+.cv-columns {
+    display: grid;
+    gap: 56px;
+    grid-template-columns: 1fr;
+}
+
+.cv-timeline {
+    margin: 0;
+    padding: 0 0 0 22px;
+    border-left: 1px solid var(--line);
+    list-style: none;
+}
+
+.cv-timeline li {
+    position: relative;
+    padding-bottom: 26px;
+}
+
+.cv-timeline li:last-child {
+    padding-bottom: 0;
+}
+
+.cv-timeline li::before {
+    content: "";
+    position: absolute;
+    top: 7px;
+    left: -26px;
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--lime);
+}
+
+.cv-timeline__period {
+    margin: 0 0 4px;
+    color: var(--lime);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+}
+
+.cv-timeline__role {
+    margin: 0 0 3px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.cv-timeline__place {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* Kenntnisse */
+
+.cv-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0 0 34px;
+    padding: 0;
+    list-style: none;
+}
+
+.cv-tags li {
+    padding: 8px 15px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-size: 13px;
+}
+
+.cv-subhead {
+    margin: 0 0 12px;
+    font-family: "Manrope", Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.cv-pairs {
+    margin: 0 0 30px;
+    display: grid;
+    gap: 8px;
+    max-width: 420px;
+}
+
+.cv-pairs div {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    font-size: 14px;
+}
+
+.cv-pairs dt {
+    font-weight: 500;
+}
+
+.cv-pairs dd {
+    margin: 0;
+    color: var(--muted);
+}
+
+/* Downloads */
+
+.cv-downloads {
+    display: grid;
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    list-style: none;
+}
+
+.cv-download {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 22px 24px;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.03);
+    transition: border-color 180ms ease, background 180ms ease;
+}
+
+.cv-download:hover,
+.cv-download:focus-visible {
+    border-color: var(--lime);
+    background: rgba(201, 244, 90, 0.08);
+}
+
+.cv-download__title {
+    margin: 0 0 6px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.cv-download__text {
+    margin: 0 0 10px;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.55;
+}
+
+.cv-download__size {
+    margin: auto 0 0;
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 12px;
+}
+
+/* Abschluss */
+
+.cv-close {
+    padding: 62px 0 96px;
+    text-align: center;
+}
+
+.cv-close__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    justify-content: center;
+    margin-top: 28px;
+}
+
+.cv-close__note {
+    margin: 46px 0 0;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 12px;
+}
+
+.button--quiet {
+    color: white;
+    background: transparent;
+    border-color: var(--line);
+}
+
+.button--quiet:hover,
+.button--quiet:focus-visible {
+    border-color: var(--lime);
+}
+
+/* Ab Tablet zweispaltig */
+
+@media (min-width: 760px) {
+    .cv-head {
+        grid-template-columns: 132px 1fr;
+        gap: 44px;
+        align-items: start;
+    }
+
+    .cv-columns {
+        grid-template-columns: 1fr 1fr;
+        gap: 64px;
+    }
+}
+
+/* Druck: die Seite ist als Dokument gedacht */
+
+@media print {
+    .cv-downloads,
+    .cv-close__actions,
+    .cv-head__badge {
+        display: none;
+    }
+
+    body {
+        color: black;
+        background: white;
+    }
+
+    .cv-section,
+    .cv-head {
+        border-color: rgba(0, 0, 0, 0.2);
+        break-inside: avoid;
+    }
+
+    .cv-fact,
+    .cv-letter,
+    .cv-download {
+        border-color: rgba(0, 0, 0, 0.2);
+        background: none;
+    }
+
+    .cv-head__intro,
+    .cv-letter p,
+    .cv-timeline__place,
+    .cv-fact p,
+    .cv-pairs dd {
+        color: #333;
+    }
+
+    .cv-head__role,
+    .cv-timeline__period,
+    .cv-fact h3 {
+        color: var(--olive);
+    }
+}

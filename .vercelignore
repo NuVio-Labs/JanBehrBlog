@@ -9,3 +9,6 @@ tools/
 
 # Galerie-Quelle; die Bilder unter galerie/bilder/ bleiben drin.
 galerie/*.md
+
+# Quelldokumente der Bewerbung; ausgeliefert wird nur ueber api/cv.js
+CV/

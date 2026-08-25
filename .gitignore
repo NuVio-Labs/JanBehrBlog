@@ -6,3 +6,17 @@ Thumbs.db
 ~$*
 __pycache__/
 *.pyc
+
+# Erzeugte QR-Codes: sie kodieren die Adresse der Bewerbungsseite
+docs/qr/*.svg
+docs/qr/*.png
+
+# Lokale Umgebungsvariablen
+.env.local
+
+# Bewerbungsunterlagen im Klartext; im Repository liegt nur das Chiffrat
+api/_quelle/klar/
+
+# Quelldokumente der Bewerbung im Original; verarbeitet und verschluesselt
+# liegen sie unter api/_quelle/*.bin
+CV/
