@@ -24,5 +24,29 @@ window.BLOG_POSTS = [
         meta: '21. August 2026',
         excerpt: 'Im Rahmen einer Sanierung des Erdgeschosses meines Eigenheims im Jahr 2022 wurden alle Räume des Erd- und Obergeschosses mit Cat7-Netzwerkkabel ausgestattet (insgesamt 16 …',
         tags: ['Netzwerkschrank', 'Patchpanel', 'CAT7', 'Dokumentation', 'Home Assistant']
+    },
+    {
+        title: 'Humanoide Roboter als Mitbewohner?',
+        url: '/beitrag/003-humanoide-roboter.html',
+        category: 'Ideen & Gedanken',
+        meta: '26. August 2026',
+        excerpt: 'Vor ein paar Tagen bin ich auf LinkedIn auf eine Umfrage gestoßen, die genau diese Frage aufgeworfen hat: Würde man sich einen humanoiden Roboter für die Hausarbeit ins Haus …',
+        tags: ['Humanoide Roboter', 'KI', 'Robotik', 'Gedanken']
+    },
+    {
+        title: 'Das smarte Badezimmer',
+        url: '/beitrag/004-das-smarte-badezimmer.html',
+        category: 'Smart Home',
+        meta: '26. August 2026',
+        excerpt: 'Nachdem das Erdgeschoss saniert war, hielt ich Ausschau nach Problemen, die sich mit SmartHome-Technik lösen ließen. Fündig wurde ich direkt in einem Raum mit gleich mehreren …',
+        tags: ['Smart Home', 'Home Assistant', 'Zigbee', 'Automatisierung', 'SONOFF']
+    },
+    {
+        title: 'Der smarte Vorgarten',
+        url: '/beitrag/005-der-smarte-vorgarten.html',
+        category: 'Smart Home',
+        meta: '27. August 2026',
+        excerpt: '„Smarter Vorgarten“ ist ehrlicherweise ein wenig irreführend, denn es geht dabei nicht um einen Garten im klassischen Sinne. Vielmehr dreht sich alles um den Bereich vor der …',
+        tags: ['Smart Home', 'Home Assistant', 'Automatisierung', 'Reolink', 'Shelly']
     }
 ];

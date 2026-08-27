@@ -38,6 +38,7 @@ INTRO_BAD_INITIALS = ('I', 'J', 'L')
 PANELS = {
     'Projekttagebuch': 'projekttagebuch',
     'Smart Home': 'smart-home',
+    'Ideen & Gedanken': 'ideen-gedanken',
 }
 
 # Kategorie -> Reiter-ID auf der Startseite, fuer den Ruecksprung.

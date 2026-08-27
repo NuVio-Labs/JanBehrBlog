@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dunkle Ankunft, eine störanfällige Türklingel und ein Vorbeet mit ungebetenen Gästen – wie eine neue Video-Türklingel, ein Shelly und eine Standort-Automation in Home Assistant den Eingangsbereich smarter machen.">
+    <meta name="author" content="Jan Behr">
+    <meta name="referrer" content="no-referrer">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; font-src 'self'; style-src 'self'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none';">
+    <meta name="theme-color" content="#eff0e9">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Der smarte Vorgarten">
+    <meta property="og:description" content="Dunkle Ankunft, eine störanfällige Türklingel und ein Vorbeet mit ungebetenen Gästen – wie eine neue Video-Türklingel, ein Shelly und eine Standort-Automation in Home Assistant den Eingangsbereich smarter machen.">
+    <meta property="og:url" content="https://www.behr.blog/beitrag/005-der-smarte-vorgarten.html">
+    <link rel="canonical" href="https://www.behr.blog/beitrag/005-der-smarte-vorgarten.html">
+    <link rel="preload" href="/assets/fonts/dm-sans-variable.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/manrope-variable.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <title>Der smarte Vorgarten | Jan Behr</title>
+    <link rel="stylesheet" href="/assets/blog.css">
+    <link rel="stylesheet" href="/assets/tailwind.css">
+    <noscript><link rel="stylesheet" href="/assets/no-script.css"></noscript>
+</head>
+
+<body>
+    <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
+    <div class="reading-progress" aria-hidden="true"><span></span></div>
+
+    <header class="site-header">
+        <div class="site-header__inner shell">
+            <a class="brand" href="/#start" aria-label="Jan Behr, Startseite">
+                <span class="brand__mark" aria-hidden="true">JB</span>
+                <span>Jan Behr</span>
+            </a>
+            <a class="back-link" href="/#projekttagebuch"><span aria-hidden="true">&#8592;</span> Alle Beiträge</a>
+        </div>
+    </header>
+
+    <main id="main-content" tabindex="-1">
+        <article>
+            <section class="article-hero" aria-labelledby="article-title">
+                <div class="article-hero__grid shell">
+                    <div>
+                        <p class="article-kicker">Smart Home</p>
+                        <h1 id="article-title">Der <em>smarte</em> Vorgarten</h1>
+                        <p class="article-hero__lead">Dunkle Ankunft, eine störanfällige Türklingel und ein Vorbeet mit ungebetenen Gästen – wie eine neue Video-Türklingel, ein Shelly und eine Standort-Automation in Home Assistant den Eingangsbereich smarter machen.</p>
+                        <div class="article-meta">
+                            <span>27. August 2026</span>
+                            <span>3 Min. Lesezeit</span>
+                        </div>
+                    </div>
+                    <span class="article-number" aria-hidden="true">06</span>
+                </div>
+            </section>
+
+            <section class="article-body">
+                <div class="article-layout shell">
+                <aside class="article-toc" aria-label="Inhaltsverzeichnis">
+                    <p class="article-toc__label">Inhalt</p>
+                    <ol>
+                        <li><a href="#ausgangslage">Ausgangslage</a></li>
+                        <li><a href="#die-probleme">Die Probleme</a></li>
+                        <li><a href="#meine-loesung">Meine Lösung</a></li>
+                        <li><a href="#plaene-fuer-die-zukunft">Pläne für die Zukunft</a></li>
+                        <li><a href="#fazit">Fazit</a></li>
+                    </ol>
+                </aside>
+                    <div class="article-copy">
+                        <p class="dropcap">„Smarter Vorgarten“ ist ehrlicherweise ein wenig irreführend, denn es geht dabei nicht um einen Garten im klassischen Sinne. Vielmehr dreht sich alles um den Bereich vor der Haustür – und die Probleme, die dort gelöst werden wollten.</p>
+
+                        <h2 id="ausgangslage">Ausgangslage</h2>
+
+                        <p>In diesem Bereich gibt es eigentlich nur wenige Komponenten: eine smarte Türklingel, die Fassadenbeleuchtung und eine beleuchtete Hausnummer. Letztere beide wurden bislang über denselben Schalter bedient. Wichtig zu wissen: Die Haustür liegt von nachmittags bis Sonnenuntergang in der prallen Sonne, und vor dem Haus parken zwei PKW.</p>
+
+                        <h2 id="die-probleme">Die Probleme</h2>
+
+                        <p>Jeder kennt es: Man kommt vom Einkaufen zurück, hat die Hände voll und muss trotzdem noch die Tür aufschließen. Oder man kommt abends beziehungsweise nachts nach Hause und tastet im Dunkeln nach Schlüssel und Schlüsselloch. Darüber hinaus war mir wichtig, mitzubekommen, wer an der Haustür klingelt oder sich auf dem Grundstück aufhält – vor allem in der Zeit, als regelmäßig ins Vorbeet gekotet wurde. All das waren Punkte, die mich störten und die ich angehen wollte.</p>
+
+                        <h2 id="meine-loesung">Meine Lösung</h2>
+
+                        <p>Die klassische Türklingel tauschte ich während der Sanierung gegen eine Ring-Türklingel aus, da der vorhandene Unterputz-Gong ohnehin überbrückt werden musste. Diese hatte allerdings regelmäßig Verbindungsprobleme und ließ sich nur schwer zuverlässig in Automationen einbinden – die Einbindung selbst funktionierte zwar, in der praktischen Ausführung gab es aber immer wieder Aussetzer. Deshalb ersetzte ich sie vor Kurzem durch eine Reolink Video Doorbell inklusive Chime. Als positiver Nebeneffekt kann ich die Aufzeichnungen nun lokal speichern und bin nicht mehr auf ein Abo angewiesen.</p>
+
+                        <p>Auf der Hardwareseite habe ich zudem – beziehungsweise der Elektriker der Familie – einen Shelly 1 Mini Gen3 vor die Außenbeleuchtung geschaltet und den physischen Schalter stillgelegt.</p>
+
+                        <p>Deutlich spannender sind aber die Lösungen über Automationen. Für das Problem mit der Dunkelheit beim Nachhausekommen habe ich eine Lösung gefunden, die ich selbst richtig clever finde: In Home Assistant habe ich einen Umkreis um unseren Wohnort definiert und diesen mit dem Standort meines iPhones verknüpft, das seine Position ebenfalls an Home Assistant sendet. So entstand eine Automation, die erkennt, wenn ich diesen Umkreis nach Sonnenuntergang betrete, und daraufhin automatisch die Außenbeleuchtung einschaltet. Das erleichtert sowohl das Einparken als auch die Schlüsselsuche. Ausgeschaltet wird das Licht anschließend per Sprachbefehl.</p>
+
+                        <p>Um auch nachts zu sehen, wer das Grundstück betritt, könnte ich natürlich einfach die integrierte Nachtsicht der Reolink Video Doorbell nutzen – das wäre mir aber zu einfach gewesen. Stattdessen habe ich eine Automation gebaut, die bei erkannter Bewegung das Licht einschaltet. Dafür verwende ich keinen separaten Bewegungsmelder, sondern die Bewegungserkennung der Türklingel selbst. Nach dem Einschalten wartet die Automation zwei Minuten, bevor das Licht wieder ausgeht. Tückisch dabei: Die Türklingel reagierte so empfindlich, dass sie das Ausschalten des Lichts selbst wieder als Bewegung interpretierte und die Automation erneut auslöste. Aktuell umgehe ich das, indem die Automation erst reagiert, wenn eine Bewegung länger als fünf Sekunden anhält.</p>
+
+                        <h2 id="plaene-fuer-die-zukunft">Pläne für die Zukunft</h2>
+
+                        <p>Wer aufmerksam gelesen hat, wird bemerkt haben, dass das „Einkaufs-Szenario“ bislang ungelöst bleibt. Der Grund: Dafür wäre ein smartes Türschloss nötig, meine Frau ist von dieser Idee aber noch nicht ganz überzeugt. Im Auge habe ich bereits das Nuki Smart Lock Pro (Gen. 5).</p>
+
+                        <p>Außerdem möchte ich prüfen, ob sich Fassadenbeleuchtung und Hausnummer künftig separat schalten lassen, da wir nicht immer beides gleichzeitig benötigen. Sollte dafür die Wand geöffnet und ein neues Kabel verlegt werden müssen, würde ich direkt auch ein LAN-Kabel für die Reolink mitverlegen, um ein weiteres Gerät vom WLAN unabhängig zu machen.</p>
+
+                        <h2 id="fazit">Fazit</h2>
+
+                        <p>Es braucht nicht immer viel Hardware, um Alltagsprobleme zu lösen. Möglich waren meine herstellerübergreifenden Automationen natürlich nur dank Home Assistant – ich gehe aber davon aus, dass so etwas künftig dank Matter over Thread auch für deutlich mehr Menschen erreichbar wird, selbst wenn sie auf die Home-App oder vergleichbare Systeme setzen.</p>
+
+                        <p>Ich bin schon gespannt, ob ich irgendwann ein Smart Lock montieren darf und welche neuen Möglichkeiten sich dadurch eröffnen.</p>
+
+                        <button class="share-button" type="button" data-share-button>Beitrag teilen <span aria-hidden="true">&#8599;</span></button>
+
+                        <div class="article-signoff">
+                            <p>Geschrieben von Jan Behr. Fragen oder Anmerkungen? Ich freue mich über den Austausch.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </article>
+
+        <nav class="article-navigation" aria-label="Weitere Beiträge">
+            <a href="/beitrag/004-das-smarte-badezimmer.html">
+                <span class="article-navigation__label">Vorheriger Beitrag</span>
+                <strong>Das smarte Badezimmer</strong>
+            </a>
+            <a href="/#tab-smart-home">
+                <span class="article-navigation__label">Übersicht</span>
+                <strong>Alle Beiträge in Smart Home</strong>
+            </a>
+        </nav>
+    </main>
+
+    <footer class="site-footer">
+        <div class="site-footer__inner shell">
+            <span class="footer-credit">&copy; 2026 Jan Behr &middot; Umsetzung <a href="https://nuviolabs.de" referrerpolicy="origin">NuVio Labs</a></span>
+            <nav aria-label="Rechtliches">
+                <a href="/">Startseite</a>
+                <a href="/impressum.html">Impressum</a>
+                <a href="/datenschutz.html">Datenschutz</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script src="/assets/header.js" defer></script>
+    <script src="/assets/blog.js" defer></script>
+    <!-- Vercel Web Analytics: cookiefrei, wird von Vercel selbst ausgeliefert. -->
+    <script src="/_vercel/insights/script.js" defer></script>
+</body>
+</html>

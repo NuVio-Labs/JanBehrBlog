@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Heizung, Lüfter und Licht liefen im Bad bislang unabhängig voneinander. Mit smartem Thermostat, Sensoren und ein paar Automationen wird daraus ein System, das mitdenkt.">
+    <meta name="author" content="Jan Behr">
+    <meta name="referrer" content="no-referrer">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; font-src 'self'; style-src 'self'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none';">
+    <meta name="theme-color" content="#eff0e9">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Das smarte Badezimmer">
+    <meta property="og:description" content="Heizung, Lüfter und Licht liefen im Bad bislang unabhängig voneinander. Mit smartem Thermostat, Sensoren und ein paar Automationen wird daraus ein System, das mitdenkt.">
+    <meta property="og:url" content="https://www.behr.blog/beitrag/004-das-smarte-badezimmer.html">
+    <link rel="canonical" href="https://www.behr.blog/beitrag/004-das-smarte-badezimmer.html">
+    <link rel="preload" href="/assets/fonts/dm-sans-variable.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/manrope-variable.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <title>Das smarte Badezimmer | Jan Behr</title>
+    <link rel="stylesheet" href="/assets/blog.css">
+    <link rel="stylesheet" href="/assets/tailwind.css">
+    <noscript><link rel="stylesheet" href="/assets/no-script.css"></noscript>
+</head>
+
+<body>
+    <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
+    <div class="reading-progress" aria-hidden="true"><span></span></div>
+
+    <header class="site-header">
+        <div class="site-header__inner shell">
+            <a class="brand" href="/#start" aria-label="Jan Behr, Startseite">
+                <span class="brand__mark" aria-hidden="true">JB</span>
+                <span>Jan Behr</span>
+            </a>
+            <a class="back-link" href="/#projekttagebuch"><span aria-hidden="true">&#8592;</span> Alle Beiträge</a>
+        </div>
+    </header>
+
+    <main id="main-content" tabindex="-1">
+        <article>
+            <section class="article-hero" aria-labelledby="article-title">
+                <div class="article-hero__grid shell">
+                    <div>
+                        <p class="article-kicker">Smart Home</p>
+                        <h1 id="article-title">Das <em>smarte</em> Badezimmer</h1>
+                        <p class="article-hero__lead">Heizung, Lüfter und Licht liefen im Bad bislang unabhängig voneinander. Mit smartem Thermostat, Sensoren und ein paar Automationen wird daraus ein System, das mitdenkt.</p>
+                        <div class="article-meta">
+                            <span>26. August 2026</span>
+                            <span>3 Min. Lesezeit</span>
+                        </div>
+                    </div>
+                    <span class="article-number" aria-hidden="true">05</span>
+                </div>
+            </section>
+
+            <section class="article-body">
+                <div class="article-layout shell">
+                <aside class="article-toc" aria-label="Inhaltsverzeichnis">
+                    <p class="article-toc__label">Inhalt</p>
+                    <ol>
+                        <li><a href="#einleitung">Einleitung</a></li>
+                        <li><a href="#die-ausgangslage">Die Ausgangslage</a></li>
+                        <li><a href="#das-problem">Das Problem</a></li>
+                        <li><a href="#meine-loesung">Meine Lösung</a></li>
+                        <li><a href="#plaene-fuer-die-zukunft">Pläne für die Zukunft</a></li>
+                        <li><a href="#fazit">Fazit</a></li>
+                    </ol>
+                </aside>
+                    <div class="article-copy">
+                        <h2 id="einleitung">Einleitung</h2>
+
+                        <p class="dropcap">Nachdem das Erdgeschoss saniert war, hielt ich Ausschau nach Problemen, die sich mit SmartHome-Technik lösen ließen. Fündig wurde ich direkt in einem Raum mit gleich mehreren Baustellen: dem Badezimmer.</p>
+
+                        <h2 id="die-ausgangslage">Die Ausgangslage</h2>
+
+                        <p>Unser Badezimmer besteht aus Toilette, Waschbecken, Dusche, Handtuchheizkörper und Lüfter, dazu kommt ein Tageslichtfenster. Zu Beginn war die Heizung mit einem klassischen Heizkörperthermostat ausgestattet, der Lüfter wurde ganz herkömmlich über einen Schalter bedient.</p>
+
+                        <h2 id="das-problem">Das Problem</h2>
+
+                        <p>Für mich ist das Badezimmer der anspruchsvollste Raum im Haus. Er sollte bei Nutzung angenehm temperiert sein, dabei aber möglichst wenig Energie verbrauchen, wenn er gerade nicht gebraucht oder gelüftet wird. Die Luftfeuchtigkeit darf nicht zu hoch steigen, um Schimmelbildung vorzubeugen – ist aber naturgemäß höher als in anderen Räumen. Interessanterweise ist es zudem der Raum, in dem am häufigsten vergessen wird, das Licht auszuschalten, und auch der Lüfter lief bislang entweder zu kurz oder deutlich zu lang.</p>
+
+                        <h2 id="meine-loesung">Meine Lösung</h2>
+
+                        <p>Als Erstes tauschte ich das klassische Heizthermostat gegen ein smartes Modell von SONOFF (TRVZB) aus, ergänzt um einen Temperatur- und Luftfeuchtigkeitssensor (SNZB-02D). Für SONOFF entschied ich mich, weil es mir empfohlen wurde, kostengünstig ist und sich über Zigbee ansteuern lässt. Dazu installierte ich den Fenstersensor Parasoll von IKEA – hier war tatsächlich vor allem der Preis ausschlaggebend. Mit diesen drei Komponenten ließen sich bereits mehrere Probleme lösen: Zum einen richtete ich eine Automation ein, die nur heizt, sobald die Temperatur unter einen festgelegten Wert fällt. Statt direkt auf die Werte von Thermostat oder Temperatursensor zuzugreifen, nutze ich dafür den Mittelwert beider Sensoren, um ein präziseres Ergebnis zu erzielen. Zusätzlich schaltet sich die Heizung sofort ab, sobald das Fenster geöffnet wird, und wieder ein, sobald es geschlossen ist.</p>
+
+                        <p>Das Problem mit dem falsch laufenden Lüfter löste ich mit einem Shelly 1PM Mini Gen4. Ein Familienmitglied, gelernter Elektriker, hatte diesen zunächst nur zwischengeschaltet, da meine Frau grundsätzlich alles im Haus auch analog bedienen können möchte. Da das ursprüngliche Problem dadurch aber weiterbestand, haben wir die Wippe des Lichtschalters stillgelegt, sodass der Shelly nun ausschließlich per Sprachassistent oder Automation gesteuert wird. Die Automation sorgt dafür, dass der Lüfter je nach Luftfeuchtigkeit ein- oder ausgeschaltet wird.</p>
+
+                        <p>Auch das Thema Licht ließ sich mit einem Shelly 1PM Mini Gen3 lösen – dieser bleibt aber sowohl per Sprachassistent als auch über den klassischen Schalter bedienbar. Im Alltag nutzen wir fast ausschließlich den Schalter; nur wenn wir vergessen haben, das Licht auszuschalten, kommt die Sprachsteuerung zum Einsatz.</p>
+
+                        <h2 id="plaene-fuer-die-zukunft">Pläne für die Zukunft</h2>
+
+                        <p>Um Ressourcen zu schonen, wollte ich sämtliche Geräte mit wiederaufladbaren Batterien betreiben. Das führte allerdings dazu, dass sich diese ungewöhnlich schnell entluden und regelmäßig ausgetauscht werden mussten – was wiederum zur Folge hatte, dass das Heizthermostat immer wieder neu eingebunden werden musste. Woran das genau liegt, ist mir bis heute nicht klar. Auch bei Softwareupdates machte mir das Thermostat Probleme: Diese brachen immer wieder ohne erkennbaren Grund ab. Aus diesem Grund halte ich für künftige Heizkörper bereits nach Alternativen ausschau und betreibe alle Geräte mit normalen Batterien.</p>
+
+                        <p>Auch das Thema Energiesparen konnte ich durch die aktuelle Automation nur bedingt lösen, da sie an die Raumtemperatur gekoppelt ist und nicht an die tatsächliche Nutzung des Badezimmers. Für die Zukunft plane ich daher den Einsatz eines Präsenzsensors – diesen möchte ich künftig auch für die Lichtsteuerung nutzen, um die Automation weiter zu optimieren.</p>
+
+                        <h2 id="fazit">Fazit</h2>
+
+                        <p>Abgesehen vom noch fehlenden Präsenzsensor läuft das Setup mittlerweile stabil und sorgt dafür, dass wir spürbar weniger Energie verschwenden und die Luftfeuchtigkeit dauerhaft in einem vernünftigen Bereich bleibt. Mit dem geplanten Präsenzsensor und einem neuen Thermostat soll das Projekt in Zukunft abgerundet werden.</p>
+
+                        <button class="share-button" type="button" data-share-button>Beitrag teilen <span aria-hidden="true">&#8599;</span></button>
+
+                        <div class="article-signoff">
+                            <p>Geschrieben von Jan Behr. Fragen oder Anmerkungen? Ich freue mich über den Austausch.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </article>
+
+        <nav class="article-navigation" aria-label="Weitere Beiträge">
+            <a href="/beitrag/002-smart-home-anfaenge.html">
+                <span class="article-navigation__label">Vorheriger Beitrag</span>
+                <strong>Von der Spielerei zur Leidenschaft</strong>
+            </a>
+            <a href="/beitrag/005-der-smarte-vorgarten.html">
+                <span class="article-navigation__label">Nächster Beitrag</span>
+                <strong>Der smarte Vorgarten</strong>
+            </a>
+        </nav>
+    </main>
+
+    <footer class="site-footer">
+        <div class="site-footer__inner shell">
+            <span class="footer-credit">&copy; 2026 Jan Behr &middot; Umsetzung <a href="https://nuviolabs.de" referrerpolicy="origin">NuVio Labs</a></span>
+            <nav aria-label="Rechtliches">
+                <a href="/">Startseite</a>
+                <a href="/impressum.html">Impressum</a>
+                <a href="/datenschutz.html">Datenschutz</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script src="/assets/header.js" defer></script>
+    <script src="/assets/blog.js" defer></script>
+    <!-- Vercel Web Analytics: cookiefrei, wird von Vercel selbst ausgeliefert. -->
+    <script src="/_vercel/insights/script.js" defer></script>
+</body>
+</html>
