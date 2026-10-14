@@ -20,3 +20,6 @@ api/_quelle/klar/
 # Quelldokumente der Bewerbung im Original; verarbeitet und verschluesselt
 # liegen sie unter api/_quelle/*.bin
 CV/
+
+# Ablage fuer Word-Quellen und Scans; Beitraege gehoeren nach beitraege/
+assets/Beiträge/

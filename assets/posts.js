@@ -48,5 +48,13 @@ window.BLOG_POSTS = [
         meta: '27. August 2026',
         excerpt: '„Smarter Vorgarten“ ist ehrlicherweise ein wenig irreführend, denn es geht dabei nicht um einen Garten im klassischen Sinne. Vielmehr dreht sich alles um den Bereich vor der …',
         tags: ['Smart Home', 'Home Assistant', 'Automatisierung', 'Reolink', 'Shelly']
+    },
+    {
+        title: 'Bye bye Alexa',
+        url: '/beitrag/006-bye-bye-alexa.html',
+        category: 'Smart Home',
+        meta: '14. Oktober 2026',
+        excerpt: 'Seit ich mein Zuhause Stück für Stück smarter mache, begleitet mich die Stimme von Amazons Smartspeaker: Alexa. In dieser Zeit stand fast jedes Amazon-Echo-Modell mindestens …',
+        tags: ['Smart Home', 'Alexa', 'Siri', 'HomePod', 'Home Assistant']
     }
 ];

@@ -12,3 +12,6 @@ galerie/*.md
 
 # Quelldokumente der Bewerbung; ausgeliefert wird nur ueber api/cv.js
 CV/
+
+# Ablage fuer Word-Quellen und Scans, nicht ausliefern
+assets/Beiträge/

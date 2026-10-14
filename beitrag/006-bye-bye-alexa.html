@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Echo-Geräte, die nicht mehr zuhören wollten, flogen raus, drei HomePods mini zogen ein. Warum der Wechsel zu Siri im Apple-Haushalt mehr bringt als gedacht und wie Home Assistant angebunden ist.">
+    <meta name="author" content="Jan Behr">
+    <meta name="referrer" content="no-referrer">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; font-src 'self'; style-src 'self'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none';">
+    <meta name="theme-color" content="#eff0e9">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Bye bye Alexa">
+    <meta property="og:description" content="Echo-Geräte, die nicht mehr zuhören wollten, flogen raus, drei HomePods mini zogen ein. Warum der Wechsel zu Siri im Apple-Haushalt mehr bringt als gedacht und wie Home Assistant angebunden ist.">
+    <meta property="og:url" content="https://www.behr.blog/beitrag/006-bye-bye-alexa.html">
+    <link rel="canonical" href="https://www.behr.blog/beitrag/006-bye-bye-alexa.html">
+    <link rel="preload" href="/assets/fonts/dm-sans-variable.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/manrope-variable.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <title>Bye bye Alexa | Jan Behr</title>
+    <link rel="stylesheet" href="/assets/blog.css">
+    <link rel="stylesheet" href="/assets/tailwind.css">
+    <noscript><link rel="stylesheet" href="/assets/no-script.css"></noscript>
+</head>
+
+<body>
+    <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
+    <div class="reading-progress" aria-hidden="true"><span></span></div>
+
+    <header class="site-header">
+        <div class="site-header__inner shell">
+            <a class="brand" href="/#start" aria-label="Jan Behr, Startseite">
+                <span class="brand__mark" aria-hidden="true">JB</span>
+                <span>Jan Behr</span>
+            </a>
+            <a class="back-link" href="/#projekttagebuch"><span aria-hidden="true">&#8592;</span> Alle Beiträge</a>
+        </div>
+    </header>
+
+    <main id="main-content" tabindex="-1">
+        <article>
+            <section class="article-hero" aria-labelledby="article-title">
+                <div class="article-hero__grid shell">
+                    <div>
+                        <p class="article-kicker">Smart Home</p>
+                        <h1 id="article-title">Bye bye <em>Alexa</em></h1>
+                        <p class="article-hero__lead">Echo-Geräte, die nicht mehr zuhören wollten, flogen raus, drei HomePods mini zogen ein. Warum der Wechsel zu Siri im Apple-Haushalt mehr bringt als gedacht und wie Home Assistant angebunden ist.</p>
+                        <div class="article-meta">
+                            <span>14. Oktober 2026</span>
+                            <span>4 Min. Lesezeit</span>
+                        </div>
+                    </div>
+                    <span class="article-number" aria-hidden="true">07</span>
+                </div>
+            </section>
+
+            <section class="article-body">
+                <div class="article-layout shell">
+                <aside class="article-toc" aria-label="Inhaltsverzeichnis">
+                    <p class="article-toc__label">Inhalt</p>
+                    <ol>
+                        <li><a href="#das-ende-einer-aera">Das Ende einer Ära</a></li>
+                        <li><a href="#die-neue-assistentin-im-haus">Die neue Assistentin im Haus</a></li>
+                        <li><a href="#siri-als-lebensveraenderer">Siri als Lebensveränderer?</a></li>
+                        <li><a href="#gaebe-es-bessere-loesungen">Gäbe es bessere Lösungen?</a></li>
+                    </ol>
+                </aside>
+                    <div class="article-copy">
+                        <h2 id="das-ende-einer-aera">Das Ende einer Ära</h2>
+
+                        <p class="dropcap">Seit ich mein Zuhause Stück für Stück smarter mache, begleitet mich die Stimme von Amazons Smartspeaker: Alexa. In dieser Zeit stand fast jedes Amazon-Echo-Modell mindestens einmal bei uns im Haus. Warum auch nicht? Die meisten Modelle waren günstig, sodass sich ein defektes Gerät schnell ersetzen ließ – gerade bei den Show-Modellen war das ein wichtiges Argument. Die Stimme war angenehm, die Ergebnisse meist ordentlich. Einzig die App war immer ein Schwachpunkt, den wir aber in Kauf genommen haben.</p>
+
+                        <p>Vor zwei Wochen flogen dann sämtliche Echo-Geräte aus meinem Netzwerk. Der Grund: Sie bekamen ihre Grundfunktion nicht mehr zuverlässig hin – das Zuhören. Genau genommen hat Alexa schon zugehört, aber nur dann, wenn sie wollte, und nicht, wenn man sie ansprach. Teilweise stand ich nur wenige Zentimeter entfernt und bekam trotzdem keine Reaktion. Bei den günstigen Modellen habe ich das noch hingenommen. Als aber auch unser Echo Show 10 (3. Generation, rund 200 €) damit anfing, war für mich das Maß voll.</p>
+
+                        <h2 id="die-neue-assistentin-im-haus">Die neue Assistentin im Haus</h2>
+
+                        <p>Ersatzlos rauswerfen konnte ich die Echos natürlich nicht, denn wir steuern fast alles im Haus über die Smartspeaker. Die Lösung lag näher als gedacht, auch wenn sie nicht meine erste Wahl war: Siri.</p>
+
+                        <p>Wir sind ein Apple-Haushalt. Ob iPhones, Apple Watches, iPads, MacBooks, AirPods, AirTags oder sogar ein alter iPod – bei uns findet sich fast alles, und wir lieben diese Geräte. Warum wir nicht schon viel früher HomePods genutzt haben? Mir war schlicht der Preis zu hoch – wer jetzt schmunzelt, schmunzelt zu Recht. Vor zwei Wochen bin ich dann über meinen Schatten gesprungen, und der erste HomePod mini zog ein. Zunächst sollte er nur in meinem Studio parallel zu den letzten Amazon-Geräten laufen, um zu testen, wie gut er sich in das bestehende Netzwerk einfügt. Daraus wurde nichts: Meine Frau „entwendete“ mein Testgerät und war sofort begeistert, sodass ich schnell weitere bestellen musste.</p>
+
+                        <h2 id="siri-als-lebensveraenderer">Siri als Lebensveränderer?</h2>
+
+                        <p>„Lebensveränderer“ ist vielleicht etwas übertrieben. Wenn aber sogar meine Frau von einem Gerät begeistert ist, heißt das schon etwas – und oft sind es gerade die unscheinbaren Dinge, die im Alltag den echten Mehrwert bringen.</p>
+
+                        <p><strong>Musik:</strong> Als Apple-Nutzer hören wir natürlich Apple Music. Mit den Alexa-Geräten war das häufig ein Kampf, weil Amazon verständlicherweise das eigene Angebot in den Vordergrund stellen wollte. Jetzt klappt das wesentlich besser, egal ob per Sprachbefehl oder vom iPhone aus. Dank AirPlay kann meine Frau außerdem das Hörspiel meines Sohnes, das sie im Auto gehört haben, ganz einfach auf den HomePod übertragen – die Geräte aneinanderhalten, fertig. Klingt banal, ist aber richtig smart.</p>
+
+                        <p><strong>Einkaufslisten:</strong> Listen gehören bei uns zum Alltag – ob für den normalen Einkauf, die Drogerie oder den Besuch im schwedischen Möbelhaus. Das ging zwar auch mit Alexa, bei Apple ist es aber schlicht bequemer: Über die Familienfreigabe sind Listen schnell geteilt, auf Wunsch wird man benachrichtigt, sobald jemand etwas hinzufügt, und auch das Verstehen und korrekte Speichern funktioniert deutlich besser.</p>
+
+                        <p><strong>Stimmerkennung:</strong> Die Erkennung der Stimmen und damit das persönliche Feedback sind um Längen besser als bei den Echo-Geräten. Bei Alexa mussten wir unsere Stimmen immer wieder neu registrieren, was wir irgendwann aufgegeben haben. Siri erkennt uns dagegen schon jetzt spürbar besser und liefert passendere Ergebnisse – auch wenn ich hier noch keine Langzeiterfahrung habe.</p>
+
+                        <p><strong>Einrichtung und Automationen:</strong> Für mich am wichtigsten sind Verwaltung und Automatisierung. Die drei HomePods waren extrem einfach eingerichtet: Stecker rein, das iPhone erkennt das Gerät sofort, nach wenigen Minuten ist alles erledigt. Auch die Anbindung der Home-App, die ich zuvor nie genutzt hatte, an Home Assistant war schnell erledigt und zudem flexibel, da ich genau festlegen konnte, welche Geräte aus Home Assistant in die Home-App übernommen werden. Da die Anbindung nur dazu dient, Geräte per Sprache zu bedienen, hätte ich mir das Sortieren in Räume eigentlich sparen können. Weil es aber so schnell ging, habe ich es trotzdem gemacht – schon allein für meinen inneren Monk.</p>
+
+                        <h2 id="gaebe-es-bessere-loesungen">Gäbe es bessere Lösungen?</h2>
+
+                        <p>Wahrscheinlich! Immer wieder sehe ich Bastler, die lokale Sprachassistenten einsetzen – ein Ansatz, den ich sehr spannend finde. Da ich durch meine Umschulung unter der Woche nicht zu Hause bin und am Wochenende meine Familie meine volle Aufmerksamkeit bekommt, musste für mich eine einfache und schnelle Lösung her. Die HomePods waren dafür die logischste Wahl, nicht zuletzt, weil wir neben ihnen nun auch iPhones und Apple Watches zur Hausteuerung nutzen können. Das hat die Zahl der nötigen Smartspeaker und damit die Anschaffungskosten reduziert.</p>
+
+                        <p>Alles in allem sind wir sehr zufrieden und freuen uns über die vielen kleinen neuen Funktionen, die den Alltag bequemer machen – denn genau das sollte schließlich das Ziel von SmartHome und jedem Upgrade sein.</p>
+
+                        <button class="share-button" type="button" data-share-button>Beitrag teilen <span aria-hidden="true">&#8599;</span></button>
+
+                        <div class="article-signoff">
+                            <p>Geschrieben von Jan Behr. Fragen oder Anmerkungen? Ich freue mich über den Austausch.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </article>
+
+        <nav class="article-navigation" aria-label="Weitere Beiträge">
+            <a href="/beitrag/005-der-smarte-vorgarten.html">
+                <span class="article-navigation__label">Vorheriger Beitrag</span>
+                <strong>Der smarte Vorgarten</strong>
+            </a>
+            <a href="/#tab-smart-home">
+                <span class="article-navigation__label">Übersicht</span>
+                <strong>Alle Beiträge in Smart Home</strong>
+            </a>
+        </nav>
+    </main>
+
+    <footer class="site-footer">
+        <div class="site-footer__inner shell">
+            <span class="footer-credit">&copy; 2026 Jan Behr &middot; Umsetzung <a href="https://nuviolabs.de" referrerpolicy="origin">NuVio Labs</a></span>
+            <nav aria-label="Rechtliches">
+                <a href="/">Startseite</a>
+                <a href="/impressum.html">Impressum</a>
+                <a href="/datenschutz.html">Datenschutz</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script src="/assets/header.js" defer></script>
+    <script src="/assets/blog.js" defer></script>
+    <!-- Vercel Web Analytics: cookiefrei, wird von Vercel selbst ausgeliefert. -->
+    <script src="/_vercel/insights/script.js" defer></script>
+</body>
+</html>

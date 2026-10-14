@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://www.behr.blog/</loc>
-        <lastmod>2026-08-27</lastmod>
+        <lastmod>2026-10-14</lastmod>
         <priority>1.0</priority>
     </url>
     <url>
@@ -33,6 +33,11 @@
     <url>
         <loc>https://www.behr.blog/beitrag/005-der-smarte-vorgarten.html</loc>
         <lastmod>2026-08-27</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.behr.blog/beitrag/006-bye-bye-alexa.html</loc>
+        <lastmod>2026-10-14</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
