@@ -41,7 +41,7 @@ ANSCHREIBEN = "Anschreiben.pdf"
 LEBENSLAUF = "Lebenslauf_Jan_Behr.pdf"
 BESCHEINIGUNG = "Bescheinigung Praktikumsgeber IT_Pflichtpraktika.pdf"
 
-DATUMSZEILE = "Gladbeck, 15.07.2026"
+DATUMSZEILE = "Gladbeck, 27. Oktober 2026"
 
 EIGENSCHAFTEN = {
     "anschreiben.pdf": (

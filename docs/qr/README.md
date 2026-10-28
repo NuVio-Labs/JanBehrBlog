@@ -62,6 +62,24 @@ node tools/verschluesseln.js   # verschluesselt sie nach api/_quelle/*.bin
 Nur die `.bin`-Dateien gehen ins Repository. Der Klartext unter
 `api/_quelle/klar/` bleibt lokal und steht in der `.gitignore`.
 
+### Uebergang mit zwei Schluesseln (seit Oktober 2026)
+
+Der Lebenslauf vom 27. Oktober 2026 musste ohne den ersten Schluessel
+eingespielt werden. Er und `aktualisierung.json` (Kenntnisse und Werdegang fuer
+die Seite) sind deshalb mit `CV_DATEN_SCHLUESSEL_2` verschluesselt, alles
+andere noch mit `CV_DATEN_SCHLUESSEL`. `api/cv.js` probiert beide, setzt den
+neuen Lebenslauf als Seite 2 in die Gesamtdatei und ersetzt auf der Seite die
+Listen `cv-tags` und `cv-timeline`.
+
+Aufraeumen, sobald der erste Schluessel wieder greifbar ist:
+
+1. Seite `seite.html` entschluesseln und Kenntnisse und Werdegang direkt
+   eintragen, Gesamtdatei mit `python tools/bewerbung.py` neu bauen.
+2. Alles mit dem ersten Schluessel verschluesseln,
+   `api/_quelle/aktualisierung.json.bin` loeschen.
+3. In `api/cv.js` `ersetzen` aus der Gesamtdatei nehmen,
+   `CV_DATEN_SCHLUESSEL_2` aus Vercel entfernen.
+
 ## Neu erzeugen
 
 Noetig, sobald sich der Schluessel oder die Domain aendert. Ein temporaeres
